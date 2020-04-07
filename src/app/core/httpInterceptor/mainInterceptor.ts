@@ -11,6 +11,7 @@ export class MainInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any>> {
+    console.log('httpInterceptor');
     return next.handle(req);
   }
 }

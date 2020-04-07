@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {BaseService} from '../../../core/base-service.service';
 
 @Component({
   selector: 'app-test-module',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestModuleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private baseService: BaseService) {
+  }
 
   ngOnInit(): void {
+    this.baseService.getMethod().subscribe(data => {
+      console.log(data);
+    });
   }
 
 }

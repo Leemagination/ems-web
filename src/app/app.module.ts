@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ShareModule} from './share/share.module';
-import {httpInterceptorProviders} from './core/httpInterceptor';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -15,9 +15,10 @@ import {httpInterceptorProviders} from './core/httpInterceptor';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ShareModule
+    ShareModule,
+    CoreModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
