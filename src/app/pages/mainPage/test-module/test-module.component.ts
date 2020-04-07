@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {BaseService} from '../../../core/base-service.service';
+import { Component, OnInit } from '@angular/core';
+import { BaseService } from '../../../core/base-service.service';
 
 @Component({
   selector: 'app-test-module',
@@ -14,6 +14,10 @@ export class TestModuleComponent implements OnInit {
   ngOnInit(): void {
     this.baseService.getMethod().subscribe(data => {
       console.log(data);
+    }, err => {
+      console.error(err)
+    }, () => {
+      console.log('complete')
     });
   }
 

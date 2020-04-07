@@ -1,14 +1,14 @@
-import {enableProdMode} from '@angular/core';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import {AppModule} from './app/app.module';
-import {environment} from './environments/environment';
-import {hmrBootstrap} from './hmr';
-
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+import { hmrBootstrap } from './hmr';
+import { MockMode } from 'mock/mock';
 if (environment.production) {
   enableProdMode();
 }
-
+MockMode();
 const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule);
 
 if (environment.hmr) {

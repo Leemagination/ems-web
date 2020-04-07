@@ -15,6 +15,8 @@ export class BaseService {
 
   public getMethod() {
     const url = `http://172.16.11.39:18201/wsp/sys/wsp-authority/findMenu`;
-    return this.http.get(url, {withCredentials: true});
+    const url2 = `http://172.16.11.39:18201/testApi`;
+
+    return this.http.get(url2, {withCredentials: true});
   }
 }
