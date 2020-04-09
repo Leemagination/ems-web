@@ -1,28 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment';
-
-const BASE_URL = environment.baseUrl;
-const testApi = {
-  key1: '@string(4,15)',
-  key2: '@integer(0,1000)',
-  key3: '@boolean()',
-  key4: '@cname()',
-  key5: {
-    test1: '123',
-    test2: 456,
-    test3: true,
-    test4: [1, 2, '4', '爱爱爱']
-  }
-};
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaseService {
-   url = `http://172.16.11.39:9696/wsp/sys/wsp-authority/findMenu`;
+   url = `/delonApi1111`;
    url2 = `http://172.16.11.39:9696/testApi`;
-   url3 = `http://test/testApi404`;
+   url3 = `/fail401`;
   constructor(private http: HttpClient) {
   }
 
@@ -36,6 +21,15 @@ export class BaseService {
 
 
   public getMethod3() {
-    return this.http.get(this.url3, {withCredentials: true});
+    return this.http.get('/fail401', {withCredentials: true});
+  }
+  public getMethod4() {
+    return this.http.get('/fail403', {withCredentials: true});
+  }
+  public getMethod5() {
+    return this.http.get('/fail404', {withCredentials: true});
+  }
+  public getMethod6() {
+    return this.http.get('/fail500', {withCredentials: true});
   }
 }

@@ -1,8 +1,7 @@
 import Mock from 'mockjs';
-import {environment} from 'src/environments/environment';
+import { MockStatusError } from '@delon/mock';
 
-const BASE_URL = environment.baseUrl;
-const testApi = {
+const mockRule = {
   key1: '@string(4,15)',
   key2: '@integer(0,1000)',
   key3: '@boolean()',
@@ -14,7 +13,20 @@ const testApi = {
     test4: [1, 2, '4', '爱爱爱']
   }
 };
-
-export const MockMode = () => {
-  Mock.mock(`${BASE_URL}/testApi`, 'get', testApi);
+export const delonMock = {
+  requestURL: {
+    'GET /delonApi': Mock.mock(mockRule),
+    'GET /fail401': () => {
+      throw  new MockStatusError(401);
+    },
+    'GET /fail403': () => {
+      throw  new MockStatusError(403);
+    },
+    'GET /fail404': () => {
+      throw  new MockStatusError(404);
+    },
+    'GET /fail500': () => {
+      throw  new MockStatusError(500);
+    }
+  }
 };

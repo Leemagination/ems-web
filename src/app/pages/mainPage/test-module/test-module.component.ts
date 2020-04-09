@@ -12,18 +12,28 @@ export class TestModuleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  /*  this.baseService.getMethod().subscribe(data => {
+    this.baseService.getMethod2().subscribe(data => {
       console.log(data);
     }, err => {
-      console.error(err);
     }, () => {
       console.log('complete');
-    });*/
+    });
 
     this.baseService.getMethod3().subscribe(data => {
       console.log(data);
     }, error => {
-      console.error(error,1);
+    });
+    this.baseService.getMethod4().subscribe(data => {
+      console.log(data);
+    }, error => {
+    });
+    this.baseService.getMethod5().subscribe(data => {
+      console.log(data);
+    }, error => {
+    });
+    this.baseService.getMethod6().subscribe(data => {
+      console.log(data);
+    }, error => {
     });
   }
 
