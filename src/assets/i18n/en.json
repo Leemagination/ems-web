@@ -1,0 +1,10 @@
+{
+    "测试": "test",
+    "登录": "login",
+    "注册": "register",
+    "test": "测试",
+    "main": {
+        "test": "AAA",
+        "登录": "login"
+    }
+}

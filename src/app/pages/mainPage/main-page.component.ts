@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {NavigationStart, Route, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { NavigationStart, Route, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-main-page',
@@ -8,13 +9,14 @@ import {NavigationStart, Route, Router} from '@angular/router';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    private translate: TranslateService) {
   }
 
   ngOnInit(): void {
-    console.log(1)
+    //console.log(1)
     this.router.events.subscribe(data => {
-      if(data instanceof NavigationStart){
+      if (data instanceof NavigationStart) {
         console.log(data)
       }
     });
