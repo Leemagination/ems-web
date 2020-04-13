@@ -4,11 +4,9 @@ import {
 } from '@angular/common/http';
 
 import { Observable, of, throwError } from 'rxjs';
-import { catchError, map, mergeMap, tap } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
+import { catchError, mergeMap } from 'rxjs/operators';
 import { NzNotificationService } from 'ng-zorro-antd';
 
-const BASE_URL = environment.baseUrl;
 
 /** Pass untouched request through to the next request handler. */
 @Injectable({providedIn: 'root'})
@@ -16,7 +14,7 @@ export class MainInterceptor implements HttpInterceptor {
   constructor(private nzNotification: NzNotificationService) {
   }
 
-  hanldeErrorResponse(res: HttpErrorResponse) {
+  handleErrorResponse(res: HttpErrorResponse) {
 
     switch (res.status) {
       case 401:
@@ -38,14 +36,14 @@ export class MainInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(map((res: any) => {
+    return next.handle(req).pipe(mergeMap((res: any) => {
         if (res instanceof HttpResponse) {
         }
         return of(res);
       }),
       catchError((res: any) => {
         if (res instanceof HttpErrorResponse) {
-          this.hanldeErrorResponse(res);
+          this.handleErrorResponse(res);
           return throwError(res);
         }
         return throwError(res) as Observable<any>;

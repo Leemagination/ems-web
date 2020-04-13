@@ -20,6 +20,11 @@ export class MainPageComponent implements OnInit {
         console.log(data)
       }
     });
+
+    this.translate.get('登录').subscribe((res: string) => {
+      console.log(res);
+      //=> 'hello world'
+    });
   }
 
 }

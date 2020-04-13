@@ -8,10 +8,14 @@ import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
-  imports: [],
+  imports: [TranslateModule.forRoot({
+    loader: {
+      provide: TranslateLoader, useFactory: languageLoader, deps: [HttpClient]
+    }
+  })],
   providers: [
     httpInterceptorProviders,
-    { provide: RouteReuseStrategy, useClass: RouteTabReuseStrategy }
+    {provide: RouteReuseStrategy, useClass: RouteTabReuseStrategy}
   ]
 })
 export class CoreModule {
