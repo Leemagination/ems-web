@@ -1,0 +1,28 @@
+.loginPage {
+  width: 100%;
+  height: 100%;
+  background: lightskyblue;
+
+  .loginForm {
+    position: relative;
+    width: 368px;
+    margin: 0 auto;
+    top: 20%;
+    background: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px 2px rgba(0, 0, 0, 0.29);
+  }
+}
+
+.login-form {
+  max-width: 300px;
+}
+
+.login-form-float {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}

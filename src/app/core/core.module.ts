@@ -2,17 +2,11 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { httpInterceptorProviders } from './httpInterceptor';
 import { RouteReuseStrategy } from '@angular/router';
 import { RouteTabReuseStrategy } from './RouteReuseStrategy';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { languageLoader } from './i18n/translate';
-import { HttpClient } from '@angular/common/http';
+import { translateModule } from './i18n/translate';
 
 @NgModule({
   declarations: [],
-  imports: [TranslateModule.forRoot({
-    loader: {
-      provide: TranslateLoader, useFactory: languageLoader, deps: [HttpClient]
-    }
-  })],
+  imports: [translateModule],
   providers: [
     httpInterceptorProviders,
     {provide: RouteReuseStrategy, useClass: RouteTabReuseStrategy}

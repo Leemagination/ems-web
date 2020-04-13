@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div class="loginPage">
+  <div class="loginForm">
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="请输入用户名!">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="userName" placeholder="Username"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your Password!">
+          <nz-input-group nzPrefixIcon="lock">
+            <input type="password" nz-input formControlName="password" placeholder="Password"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <label nz-checkbox formControlName="remember" class="login-form-right">
+            <span>{{'记住我'|translate}}</span>
+          </label>
+          <a class="login-form-float" routerLink="/register">{{'注册'|translate}}</a>
+          <button nz-button class="login-form-button" [nzType]="'primary'">{{'登录'|translate}}</button>
+          <a class="login-form-float">{{'忘记密码'|translate}}</a>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</div>
