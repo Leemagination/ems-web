@@ -9,21 +9,14 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(private router: Router,
-    private translate: TranslateService) {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
-    //console.log(1)
     this.router.events.subscribe(data => {
       if (data instanceof NavigationStart) {
         console.log(data)
       }
-    });
-
-    this.translate.get('登录').subscribe((res: string) => {
-      console.log(res);
-      //=> 'hello world'
     });
   }
 

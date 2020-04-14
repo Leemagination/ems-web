@@ -1,0 +1,18 @@
+::ng-deep :root{
+  --NavigationBarHeight:60px;
+  --MenuBarWidth:160px;
+}
+
+.mainContainer {
+  width: 100%;
+  height: calc(100% - var(--NavigationBarHeight));
+  overflow: auto
+}
+
+.mainPageDisplayArea {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - var(--MenuBarWidth));
+  height: calc(100% - var(--NavigationBarHeight));
+  overflow: auto;
+}

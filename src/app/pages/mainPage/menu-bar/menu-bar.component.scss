@@ -1,0 +1,9 @@
+:host {
+  position: relative;
+  display: inline-block;
+  height: calc(100% - var(--NavigationBarHeight));
+  width: var(--MenuBarWidth);
+  background: lightskyblue;
+  vertical-align: top;
+  transition:width linear 0.2s;
+}
