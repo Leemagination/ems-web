@@ -8,10 +8,7 @@
   <ng-template #singleMenuItem>
       <li nz-submenu>
             <span title>
-           <i *ngIf="!menuItem.icon;else menuIcon" class="anticon anticon-bars"></i>
-              <ng-template #menuIcon>
-               <i [ngClass]="menuItem.icon"></i>
-              </ng-template>
+             <i nz-icon [nzType]="'bars'"></i>
               <span>{{menuItem.menuTitle}}</span>
             </span>
         <ul>
