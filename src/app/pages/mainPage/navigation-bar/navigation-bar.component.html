@@ -1,9 +1,7 @@
 <div class="navigationBar">
   <div class="logoArea">
       <button class="CollapsedButton" nz-button [nzType]="'primary'" (click)="menuService.isCollapsed=!menuService.isCollapsed">
-        <i class="anticon" [class.anticon-menu-unfold]="menuService.isCollapsed"
-           [class.anticon-menu-fold]="!menuService.isCollapsed">
-        </i>
+        <i nz-icon [nzType]="menuService.isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
       </button>
   </div>
   <div class="toolBar">
@@ -15,7 +13,7 @@
         <ng-template #titleTemplate>
           <div>
             {{ tab.tabTitle }}
-            <span class="tabCloseIcon"><i *ngIf="i===navigationBarService.tabIndex" class="anticon anticon-close-circle-o" (click)="navigationBarService.removeTab(i)"></i></span>
+            <span class="tabCloseIcon"><i *ngIf="i===navigationBarService.tabIndex" nz-icon nzType="close-circle" (click)="navigationBarService.removeTab(i)"></i></span>
           </div>
         </ng-template>
       </nz-tab>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 export interface MenuItem {
   menuTitle: string;
-  icon?: string[];
+  icon?: string;
   subMenu?: MenuItem[];
 }
 
@@ -38,7 +38,7 @@ export class MenuBarService {
     },
     {
       menuTitle: '菜单2',
-      icon: ['anticon anticon-play-circle'],
+      icon: 'question',
       subMenu: [{
         menuTitle: '啊啊啊啊啊'
       }]
