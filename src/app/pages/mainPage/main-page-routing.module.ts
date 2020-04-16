@@ -8,7 +8,10 @@ const routes: Routes = [{
   path: '',
   component: MainPageComponent,
   children: [
-    {path: 'home', component: HomePageComponent}
+    {path: 'home', component: HomePageComponent},
+    {
+      path: '**', redirectTo: 'home', pathMatch: 'full'
+    },
   ]
 }];
 

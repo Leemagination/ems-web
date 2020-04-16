@@ -1,1 +1,25 @@
-<div></div>
+<div class="navigationBar">
+  <div class="logoArea">
+      <button class="CollapsedButton" nz-button [nzType]="'primary'" (click)="menuService.isCollapsed=!menuService.isCollapsed">
+        <i class="anticon" [class.anticon-menu-unfold]="menuService.isCollapsed"
+           [class.anticon-menu-fold]="!menuService.isCollapsed">
+        </i>
+      </button>
+  </div>
+  <div class="toolBar">
+
+  </div>
+  <div class="navigationArea">
+    <nz-tabset style="left:20px;" [nzTabPosition]="'bottom'" [(nzSelectedIndex)]="navigationBarService.tabIndex" >
+      <nz-tab *ngFor="let tab of navigationBarService.tabs;let i = index" [nzTitle]="titleTemplate">
+        <ng-template #titleTemplate>
+          <div>
+            {{ tab.tabTitle }}
+            <span class="tabCloseIcon"><i *ngIf="i===navigationBarService.tabIndex" class="anticon anticon-close-circle-o" (click)="navigationBarService.removeTab(i)"></i></span>
+          </div>
+        </ng-template>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+
+</div>

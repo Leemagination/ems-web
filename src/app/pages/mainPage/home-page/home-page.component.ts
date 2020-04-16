@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationBarService } from '../../../core/services/navigation-bar.service';
+import { MenuBarService } from '../../../core/services/menu-bar.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,14 +10,19 @@ import { Component, OnInit } from '@angular/core';
 export class HomePageComponent implements OnInit {
   flag = true;
 
-  constructor() {
+  constructor(private navigation: NavigationBarService,
+              private menuService: MenuBarService) {
   }
 
   ngOnInit(): void {
   }
 
   test() {
-    document.documentElement.style.setProperty('--MenuBarWidth', this.flag ? '60px' : '160px');
-    this.flag = !this.flag;
+  /*  this.menuService.isCollapsed = !this.menuService.isCollapsed;
+    document.documentElement.style.setProperty('--MenuBarWidth', this.menuService.isCollapsed ? '60px' : '200px');*/
+  }
+
+  test2() {
+    this.navigation.addTab();
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuBarService } from '../../../core/services/menu-bar.service';
 
 @Component({
   selector: 'app-menu-bar',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-bar.component.scss']
 })
 export class MenuBarComponent implements OnInit {
+  isCollapsed = true;
 
-  constructor() { }
+  constructor(public menuService: MenuBarService) {
+  }
 
   ngOnInit(): void {
   }

@@ -1,1 +1,25 @@
-<p>menu-bar works!</p>
+<ul nz-menu [nzMode]="'inline'" [nzInlineCollapsed]="menuService.isCollapsed">
+  <!-- <app-menu-list *ngFor="let menuItem of menuService.menuList" [menuItem]="menuItem"></app-menu-list>-->
+  <ng-container *ngFor="let menuItem of menuService.menuList">
+    <li nz-menu-item *ngIf="!menuItem.subMenu;else singleMenuItem">
+          <span title>
+           <!-- <i class="anticon anticon-bars"></i>-->
+            <span>{{menuItem.menuTitle}}</span>
+          </span>
+    </li>
+    <ng-template #singleMenuItem>
+      <li nz-submenu>
+            <span title>
+             <i *ngIf="!menuItem.icon;else menuIcon" class="anticon anticon-bars"></i>
+              <ng-template #menuIcon >
+             <!--   <i  [attr.class]="'anticon anticon-bars'"></i>-->
+              </ng-template>
+              <span>{{menuItem.menuTitle}}</span>
+            </span>
+        <ul>
+          <app-menu-list *ngFor="let subMenu of menuItem.subMenu" [menuItem]="subMenu"></app-menu-list>
+        </ul>
+      </li>
+    </ng-template>
+  </ng-container>
+</ul>

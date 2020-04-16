@@ -3,7 +3,17 @@
   display: inline-block;
   height: calc(100% - var(--NavigationBarHeight));
   width: var(--MenuBarWidth);
-  background: lightskyblue;
+  /*background: lightskyblue;*/
+  box-shadow: 1px 4px 10px -6px #656565;
   vertical-align: top;
-  transition:width linear 0.2s;
+  transition: width linear 0.2s;
+
+  ::ng-deep .ant-menu-inline-collapsed {
+    width: 100%;
+  }
+
+  ::ng-deep .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title, ::ng-deep .ant-menu-inline-collapsed > .ant-menu-item {
+    padding: 0 22px !important;
+  }
+
 }

@@ -1,0 +1,22 @@
+<ng-container >
+  <li nz-menu-item *ngIf="!menuItem.subMenu;else singleMenuItem">
+          <span title>
+           <!-- <i class="anticon anticon-bars"></i>-->
+            <span>{{menuItem.menuTitle}}</span>
+          </span>
+  </li>
+  <ng-template #singleMenuItem>
+      <li nz-submenu>
+            <span title>
+           <i *ngIf="!menuItem.icon;else menuIcon" class="anticon anticon-bars"></i>
+              <ng-template #menuIcon>
+               <i [ngClass]="menuItem.icon"></i>
+              </ng-template>
+              <span>{{menuItem.menuTitle}}</span>
+            </span>
+        <ul>
+          <app-menu-list *ngFor="let subMenu of menuItem.subMenu" [menuItem]="subMenu"></app-menu-list>
+        </ul>
+      </li>
+  </ng-template>
+</ng-container>

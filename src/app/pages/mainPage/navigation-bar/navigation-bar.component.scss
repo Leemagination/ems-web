@@ -3,5 +3,99 @@
   display: block;
   height: var(--NavigationBarHeight);
   width: 100%;
-  background: antiquewhite;
+  color: white;
+  background: #6ec0ff;
+  box-shadow: 0 -8px 18px -10px #9d9d9df2 inset;
+  --toolBarWidth: 200px;
+
+  .CollapsedButton {
+    margin-left: 18px;
+    margin-top: 16px;
+  }
+}
+
+.navigationBar {
+  height: 100%;
+
+  div {
+    height: 100%;
+  }
+
+  .logoArea {
+    float: left;
+    min-width: var(--MenuBarWidth);
+
+    ::ng-deep .ant-btn-primary {
+      color: #1890ff;
+      background-color: #ffffff;
+      border-color: white;
+      /* text-shadow: 0 -1px 0 rgba(0,0,0,.12); */
+      box-shadow: 0 2px 4px rgba(115, 105, 105, 0.74);
+    }
+
+    ::ng-deep .ant-btn-primary:focus {
+      border: none;
+      background-color: white;
+      color: #1890ff;
+    }
+
+    ::ng-deep .ant-btn-primary:hover {
+      border: none;
+      background-color: #40a9ff;
+      color: white;
+    }
+  }
+
+  .navigationArea {
+
+    width: 100%;
+    transition: width linear 0.2s;
+
+    ::ng-deep .ant-tabs-card .ant-tabs-bar .ant-tabs-tab {
+      border-color: transparent;
+      background: transparent;
+    }
+
+    ::ng-deep .ant-tabs-bottom .ant-tabs-bottom-bar {
+      margin-top: 17px;
+    }
+
+    ::ng-deep .ant-tabs-bar {
+      border: none;
+    }
+
+    ::ng-deep .ant-tabs {
+      color: white;
+    }
+
+    ::ng-deep .ant-tabs-nav .ant-tabs-tab-active {
+      background: white;
+      border-radius: 10px 10px 0 0;
+      box-shadow: 0 0 8px 0 #9a9a9a;
+    }
+
+    ::ng-deep .ant-tabs-nav .ant-tabs-tab {
+      padding: 12px 8px 12px 16px;
+    }
+
+    ::ng-deep .ant-tabs-ink-bar {
+      background: transparent;
+    }
+
+    ::ng-deep .ant-tabs-nav-container, ::ng-deep .ant-tabs-nav-wrap, ::ng-deep .ant-tabs-nav-scroll {
+      overflow: visible;
+    }
+
+    .tabCloseIcon {
+      margin-left: 8px;
+      width: 16px;
+      display: inline-block;
+      color: #5b5b5b85;
+    }
+  }
+
+  .toolBar {
+    float: right;
+    min-width: var(--toolBarWidth);
+  }
 }
