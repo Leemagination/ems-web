@@ -1,14 +1,14 @@
 <ng-container >
   <li nz-menu-item *ngIf="!menuItem.subMenu;else singleMenuItem">
           <span title>
-           <!-- <i class="anticon anticon-bars"></i>-->
+                <i *ngIf="menuItem.icon;" nz-icon [nzType]="menuItem.icon"></i>
             <span>{{menuItem.menuTitle}}</span>
           </span>
   </li>
   <ng-template #singleMenuItem>
       <li nz-submenu>
             <span title>
-             <i nz-icon [nzType]="'bars'"></i>
+          <i *ngIf="menuItem.icon;" nz-icon [nzType]="menuItem.icon"></i>
               <span>{{menuItem.menuTitle}}</span>
             </span>
         <ul>

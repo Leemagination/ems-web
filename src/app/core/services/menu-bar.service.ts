@@ -10,38 +10,49 @@ export interface MenuItem {
   providedIn: 'root'
 })
 export class MenuBarService {
+  private COLLAPSED_WIDTH = 140;
   private _isCollapsed = false;
   get isCollapsed(): boolean {
     return this._isCollapsed;
   }
 
   set isCollapsed(value: boolean) {
+    const style = getComputedStyle(document.documentElement);
+    const currentMenuWidth = Number(style.getPropertyValue('--MenuBarWidth').slice(0, -2));
+    const menuWidth = this._isCollapsed ? currentMenuWidth + this.COLLAPSED_WIDTH : currentMenuWidth - this.COLLAPSED_WIDTH;
     this._isCollapsed = value;
-    document.documentElement.style.setProperty('--MenuBarWidth', this._isCollapsed ? '60px' : '200px');
+    document.documentElement.style.setProperty('--MenuBarWidth', menuWidth + 'px');
   }
 
   public menuList: MenuItem[] = [
     {
-      menuTitle: '菜单1',
+      menuTitle: '常用菜单',
+      subMenu: []
+    },
+    {
+      menuTitle: '图表',
+      icon: 'bars',
       subMenu: [
-        {
-          menuTitle: '子菜单1', subMenu: [
-            {menuTitle: '芝芝菜单1'},
-            {menuTitle: '芝芝菜单2'},
-            {menuTitle: '芝芝菜单3'},
-          ]
-        },
-        {menuTitle: '子菜单2'},
-        {menuTitle: '子菜单3'},
-        {menuTitle: '子菜单4'}
+        {menuTitle: '图表1'},
+        {menuTitle: '图表2'},
+        {menuTitle: '图表3'}
       ]
     },
     {
-      menuTitle: '菜单2',
+      menuTitle: '表格',
       icon: 'question',
-      subMenu: [{
-        menuTitle: '啊啊啊啊啊'
-      }]
+      subMenu: [
+        {menuTitle: '简单表格页'},
+        {menuTitle: '复杂表格页'},
+      ]
+    },
+    {
+      menuTitle: '表单',
+      icon: 'bars'
+    },
+    {
+      menuTitle: '错误处理',
+      icon: 'bars'
     }
   ];
 

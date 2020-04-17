@@ -8,7 +8,7 @@
 
   </div>
   <div class="navigationArea">
-    <nz-tabset style="left:20px;" [nzTabPosition]="'bottom'" [(nzSelectedIndex)]="navigationBarService.tabIndex" >
+    <nz-tabset  [nzTabPosition]="'bottom'" [(nzSelectedIndex)]="navigationBarService.tabIndex" >
       <nz-tab *ngFor="let tab of navigationBarService.tabs;let i = index" [nzTitle]="titleTemplate">
         <ng-template #titleTemplate>
           <div>

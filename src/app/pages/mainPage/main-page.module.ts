@@ -7,7 +7,6 @@ import { ShareModule } from '../../share/share.module';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { NavigationBarService } from '../../core/services/navigation-bar.service';
 import { MenuListComponent } from './menu-bar/menu-list/menu-list.component';
 
 

@@ -7,6 +7,7 @@
   background: #6ec0ff;
   box-shadow: 0 -8px 18px -10px #9d9d9df2 inset;
   --toolBarWidth: 200px;
+  --MenuTransition: width linear 0.2s;
 
   .CollapsedButton {
     margin-left: 18px;
@@ -23,7 +24,8 @@
 
   .logoArea {
     float: left;
-    min-width: var(--MenuBarWidth);
+    width: var(--MenuBarWidth);
+    transition: var(--MenuTransition);
 
     ::ng-deep .ant-btn-primary {
       color: #1890ff;
@@ -49,15 +51,11 @@
   .navigationArea {
 
     width: 100%;
-    transition: width linear 0.2s;
+    transition: var(--MenuTransition);
 
     ::ng-deep .ant-tabs-card .ant-tabs-bar .ant-tabs-tab {
       border-color: transparent;
       background: transparent;
-    }
-
-    ::ng-deep .ant-tabs-bottom .ant-tabs-bottom-bar {
-      margin-top: 17px;
     }
 
     ::ng-deep .ant-tabs-bar {
@@ -71,7 +69,13 @@
     ::ng-deep .ant-tabs-nav .ant-tabs-tab-active {
       background: white;
       border-radius: 10px 10px 0 0;
-      box-shadow: 0 0 8px 0 #9a9a9a;
+      box-shadow: 0 0 8px 2px #9a9a9a;
+    }
+
+    ::ng-deep .ant-tabs-nav .ant-tabs-tab:hover{
+      background: white;
+      border-radius: 10px 10px 0 0;
+      box-shadow: 0 0 8px 2px #9a9a9a;
     }
 
     ::ng-deep .ant-tabs-nav .ant-tabs-tab {
@@ -84,6 +88,10 @@
 
     ::ng-deep .ant-tabs-nav-container, ::ng-deep .ant-tabs-nav-wrap, ::ng-deep .ant-tabs-nav-scroll {
       overflow: visible;
+    }
+
+    ::ng-deep .ant-tabs-nav-scroll{
+      margin-left: 20px;
     }
 
     .tabCloseIcon {
