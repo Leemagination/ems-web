@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationBarService } from '../../../core/services/navigation-bar.service';
 import { MenuBarService } from '../../../core/services/menu-bar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -11,6 +12,7 @@ export class HomePageComponent implements OnInit {
   flag = true;
 
   constructor(private navigation: NavigationBarService,
+              private router: Router,
               private menuService: MenuBarService) {
   }
 
@@ -18,11 +20,11 @@ export class HomePageComponent implements OnInit {
   }
 
   test() {
-  /*  this.menuService.isCollapsed = !this.menuService.isCollapsed;
-    document.documentElement.style.setProperty('--MenuBarWidth', this.menuService.isCollapsed ? '60px' : '200px');*/
+    /*  this.menuService.isCollapsed = !this.menuService.isCollapsed;
+      document.documentElement.style.setProperty('--MenuBarWidth', this.menuService.isCollapsed ? '60px' : '200px');*/
   }
 
   test2() {
-    this.navigation.addTab();
+    this.router.navigateByUrl('/chart1');
   }
 }

@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MainPageComponent } from './pages/mainPage/main-page.component';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('./pages/mainPage/main-page.module').then(m => m.MainPageModule)
-  },
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
@@ -14,6 +11,11 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule)
+  },
+  {
+    path: '',
+  /*  component: MainPageComponent*/
+    loadChildren: () => import('./pages/mainPage/main-page.module').then(m => m.MainPageModule)
   },
   {
     path: '**', redirectTo: '', pathMatch: 'full'

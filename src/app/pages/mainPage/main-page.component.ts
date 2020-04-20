@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationStart, Route, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import { NavigationBarService } from '../../core/services/navigation-bar.service';
 
 @Component({
   selector: 'app-main-page',
@@ -9,15 +9,35 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private navigationService: NavigationBarService, private route: ActivatedRoute) {
+    this.initNavigationBar(router.url);
   }
 
   ngOnInit(): void {
+    this.getRouteConfig();
+    console.log(111)
     this.router.events.subscribe(data => {
       if (data instanceof NavigationStart) {
-        console.log(data)
+        console.log(data, 'start');
+        this.initNavigationBar(data.url);
+      }
+      if (data instanceof NavigationError) {
+        console.log(data);
+      }
+      if (data instanceof NavigationEnd) {
+        console.log(data, 'end');
       }
     });
   }
+
+  initNavigationBar(fullUrl) {
+    const url = fullUrl.split('?')[0];
+    this.navigationService.findTabIndexByUrl(url, true);
+  }
+
+  getRouteConfig() {
+    this.navigationService.routeConfig = this.route.routeConfig;
+  }
+
 
 }

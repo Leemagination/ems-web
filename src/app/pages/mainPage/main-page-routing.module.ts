@@ -9,6 +9,8 @@ const routes: Routes = [{
   component: MainPageComponent,
   children: [
     {path: 'home', component: HomePageComponent},
+    {path: 'chart1', loadChildren: () => import('./chart/chart1/chart1.module').then(m => m.Chart1Module)},
+    {path: 'chart2', loadChildren: () => import('./chart/chart2/chart2.module').then(m => m.Chart2Module)},
     {
       path: '**', redirectTo: 'home', pathMatch: 'full'
     },

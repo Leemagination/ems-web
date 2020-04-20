@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 export interface MenuItem {
   menuTitle: string;
+  routerLink?: string;
   icon?: string;
   subMenu?: MenuItem[];
 }
@@ -33,9 +34,9 @@ export class MenuBarService {
       menuTitle: '图表',
       icon: 'bars',
       subMenu: [
-        {menuTitle: '图表1'},
-        {menuTitle: '图表2'},
-        {menuTitle: '图表3'}
+        {menuTitle: '图表1', routerLink: '/chart1'},
+        {menuTitle: '图表2', routerLink: '/chart2'},
+        {menuTitle: '图表3', routerLink: '/chart1/test'}
       ]
     },
     {
@@ -57,6 +58,31 @@ export class MenuBarService {
   ];
 
   constructor() {
+  }
+
+
+  findMenuByUrl(url: string): MenuItem {
+    return this.recursiveMenu(this.menuList, url);
+  }
+
+  recursiveMenu(menu: MenuItem[], url: string): MenuItem {
+    let result = null;
+    for (let i = 0; i < menu.length; i++) {
+      if (menu[i].subMenu) {
+        const menuItem = this.recursiveMenu(menu[i].subMenu, url);
+        if (menuItem) {
+          result = menuItem;
+        }
+      } else {
+        if (menu[i].routerLink === url) {
+          result = {
+            menuTitle: menu[i].menuTitle,
+            routerLink: menu[i].routerLink
+          };
+        }
+      }
+    }
+    return result;
   }
 
 }
