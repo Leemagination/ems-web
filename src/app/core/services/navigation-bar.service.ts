@@ -13,15 +13,6 @@ interface NavigationTab {
 })
 
 export class NavigationBarService {
-  get routeConfig() {
-    return this._routeConfig;
-  }
-
-  set routeConfig(value) {
-    this._routeConfig = value;
-  }
-
-  private _routeConfig;
   public tabs: NavigationTab[] = [
     {tabTitle: '首页', routerLink: '/home', closeable: false}
   ];
@@ -35,9 +26,6 @@ export class NavigationBarService {
     if (!tab) {
       return;
     }
-   /* if (!this.verifyRouteLink(tab.routerLink)) {
-      return;
-    }*/
     this.tabs.push({tabTitle: tab.tabTitle, routerLink: tab.routerLink, closeable: tab.closeable});
     if (redirectNewTab) {
       this.changeTab(this.tabs.length - 1);
@@ -88,17 +76,5 @@ export class NavigationBarService {
       closeable: true
     };
   }
-
-  verifyRouteLink(url) {
-    console.log(this.routeConfig);
-    for (let i = 0; i < this.routeConfig.children.length; i++) {
-      if (this.routeConfig.children[i].path === url.slice(1)) {
-        return true;
-      }
-    }
-    console.error(`路由错误:${url}是无效的路由路径`);
-    return false;
-  }
-
 
 }

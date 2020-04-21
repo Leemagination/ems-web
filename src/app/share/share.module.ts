@@ -11,12 +11,14 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     NgZorroAntdModule
   ],
   exports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     NgZorroAntdModule,
     TranslateModule

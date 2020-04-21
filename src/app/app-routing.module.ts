@@ -6,15 +6,16 @@ import { MainPageComponent } from './pages/mainPage/main-page.component';
 const routes: Routes = [
   {
     path: 'login',
+    data: {reuseRoute: false},
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
   },
   {
     path: 'register',
+    data: {reuseRoute: false},
     loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule)
   },
   {
     path: '',
-  /*  component: MainPageComponent*/
     loadChildren: () => import('./pages/mainPage/main-page.module').then(m => m.MainPageModule)
   },
   {

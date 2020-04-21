@@ -9,23 +9,20 @@ import { NavigationBarService } from '../../core/services/navigation-bar.service
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(private router: Router, private navigationService: NavigationBarService, private route: ActivatedRoute) {
-    this.initNavigationBar(router.url);
+  constructor(private router: Router, private navigationService: NavigationBarService) {
+    const url = router.url.split('?')[0].match(/(^\/\S*?(?=\/))|(^\/\S*)/g)[0];
+    this.initNavigationBar(url);
   }
 
   ngOnInit(): void {
-    this.getRouteConfig();
-    console.log(111)
     this.router.events.subscribe(data => {
-      if (data instanceof NavigationStart) {
-        console.log(data, 'start');
-        this.initNavigationBar(data.url);
-      }
-      if (data instanceof NavigationError) {
-        console.log(data);
-      }
       if (data instanceof NavigationEnd) {
-        console.log(data, 'end');
+        if (data.url !== data.urlAfterRedirects) {
+          console.error(`路由错误:${data.url}不是有效的路由路径`);
+          this.initNavigationBar(data.urlAfterRedirects);
+          return;
+        }
+        this.initNavigationBar(data.url);
       }
     });
   }
@@ -33,10 +30,6 @@ export class MainPageComponent implements OnInit {
   initNavigationBar(fullUrl) {
     const url = fullUrl.split('?')[0];
     this.navigationService.findTabIndexByUrl(url, true);
-  }
-
-  getRouteConfig() {
-    this.navigationService.routeConfig = this.route.routeConfig;
   }
 
 

@@ -36,7 +36,7 @@ export class MenuBarService {
       subMenu: [
         {menuTitle: '图表1', routerLink: '/chart1'},
         {menuTitle: '图表2', routerLink: '/chart2'},
-        {menuTitle: '图表3', routerLink: '/chart1/test'}
+        {menuTitle: '图表3', routerLink: '/chart1/test1'}
       ]
     },
     {

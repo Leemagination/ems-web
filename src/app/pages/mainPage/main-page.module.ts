@@ -14,8 +14,8 @@ import { MenuListComponent } from './menu-bar/menu-list/menu-list.component';
   declarations: [MainPageComponent, NavigationBarComponent, MenuBarComponent, HomePageComponent, MenuListComponent],
   imports: [
     CommonModule,
+    ShareModule,
     MainPageRoutingModule,
-    ShareModule
   ]
 })
 export class MainPageModule {
