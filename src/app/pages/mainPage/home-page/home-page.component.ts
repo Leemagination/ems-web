@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
   flag = true;
+  chart1Test = '';
 
   constructor(private navigation: NavigationBarService,
               private router: Router,

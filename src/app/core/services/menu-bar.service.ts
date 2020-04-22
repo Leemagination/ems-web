@@ -43,8 +43,8 @@ export class MenuBarService {
       menuTitle: '表格',
       icon: 'question',
       subMenu: [
-        {menuTitle: '简单表格页'},
-        {menuTitle: '复杂表格页'},
+        {menuTitle: '简单表格页', routerLink: '/testModule/test1'},
+        {menuTitle: '复杂表格页', routerLink: '/testModule/test2'},
       ]
     },
     {

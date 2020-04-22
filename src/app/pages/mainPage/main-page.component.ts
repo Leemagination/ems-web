@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { NavigationBarService } from '../../core/services/navigation-bar.service';
+import { RouteTabReuseStrategy } from '../../core/RouteReuseStrategy';
 
 @Component({
   selector: 'app-main-page',
@@ -10,8 +11,7 @@ import { NavigationBarService } from '../../core/services/navigation-bar.service
 export class MainPageComponent implements OnInit {
 
   constructor(private router: Router, private navigationService: NavigationBarService) {
-    const url = router.url.split('?')[0].match(/(^\/\S*?(?=\/))|(^\/\S*)/g)[0];
-    this.initNavigationBar(url);
+    this.initNavigationBar(router.url);
   }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-  initNavigationBar(fullUrl) {
+  initNavigationBar(fullUrl: string) {
     const url = fullUrl.split('?')[0];
     this.navigationService.findTabIndexByUrl(url, true);
   }

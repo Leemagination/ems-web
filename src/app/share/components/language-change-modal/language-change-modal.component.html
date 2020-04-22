@@ -1,0 +1,11 @@
+<div class="languageModal">
+<a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" nzClickHide>
+  {{currentLanguage}}
+  <i nz-icon nzType="down"></i>
+</a>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item *ngFor="let language of languageOptions" (click)="changeLanguage(language)">{{language.title}}</li>
+  </ul>
+</nz-dropdown-menu>
+</div>

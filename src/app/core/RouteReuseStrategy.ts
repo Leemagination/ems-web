@@ -8,33 +8,38 @@ export class RouteTabReuseStrategy implements RouteReuseStrategy {
   private reuseRoute: { [key: string]: DetachedRouteHandle } = {};
 
   retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle | null {
-    console.log('retrieve', route.routeConfig);
-    if (!route.routeConfig) {
+    if (!route.routeConfig || route.routeConfig.loadChildren) {
       return null;
     }
-    console.log(this.reuseRoute[route.routeConfig.path]);
-    return this.reuseRoute[route.routeConfig.path];
+    return this.reuseRoute[this.getRouteUrl(route)];
   }
 
   shouldAttach(route: ActivatedRouteSnapshot): boolean {
-    console.log('attach', route.routeConfig, this.reuseRoute[route.routeConfig.path]);
     return (
-      !!route.routeConfig && !!this.reuseRoute[route.routeConfig.path]
+      !!route.routeConfig && !!this.reuseRoute[this.getRouteUrl(route)]
     );
   }
 
   shouldDetach(route: ActivatedRouteSnapshot): boolean {
-    console.log('detach');
+    if (!route.routeConfig || route.routeConfig.loadChildren) {
+      return false;
+    }
     return route.data.reuseRoute !== false;
   }
 
   shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {
-    console.log(future.routeConfig, curr.routeConfig);
     return future.routeConfig === curr.routeConfig;
   }
 
   store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle | null): void {
-    console.log('store', route.routeConfig);
-    this.reuseRoute[route.routeConfig.path] = handle;
+    if (!handle) {
+      return;
+    }
+    this.reuseRoute[this.getRouteUrl(route)] = handle;
   }
+
+  private getRouteUrl(route: ActivatedRouteSnapshot) {//获取当前路由路径
+    return route['_routerState'].url;
+  }
+
 }

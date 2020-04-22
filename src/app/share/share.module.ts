@@ -4,10 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
+import { LanguageChangeModalComponent } from './components/language-change-modal/language-change-modal.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [LanguageChangeModalComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     ReactiveFormsModule,
     NgZorroAntdModule,
-    TranslateModule
+    TranslateModule,
+    LanguageChangeModalComponent
   ]
 })
 export class ShareModule {
