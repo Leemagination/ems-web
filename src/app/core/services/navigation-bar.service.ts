@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MenuBarService } from './menu-bar.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { RouteTabReuseStrategy } from '../RouteReuseStrategy';
 
 interface NavigationTab {
   tabTitle: string;
@@ -33,6 +34,7 @@ export class NavigationBarService {
   }
 
   removeTab(tabIndex: number): void {
+    RouteTabReuseStrategy.deleteRouteSnapshot(this.tabs[tabIndex].routerLink);
     this.tabs = this.tabs.filter((item, index) => {
       return tabIndex !== index;
     });
@@ -68,7 +70,7 @@ export class NavigationBarService {
     }
     const menu = this.menuService.findMenuByUrl(url);
     if (!menu) {
-      console.error(`菜单栏不存在${url}路径!`)
+      console.error(`菜单栏不存在${url}路径!`);
       this.router.navigateByUrl('/home');
       return;
     }

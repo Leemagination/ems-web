@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-chart1',
   templateUrl: './chart1.component.html',
   styleUrls: ['./chart1.component.scss']
 })
-export class Chart1Component implements OnInit {
+export class Chart1Component implements OnInit, OnDestroy {
   chart1Test = '';
 
   constructor() {
@@ -14,4 +14,6 @@ export class Chart1Component implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+  }
 }

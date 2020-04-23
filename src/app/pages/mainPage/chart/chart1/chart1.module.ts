@@ -14,4 +14,5 @@ import { ShareModule } from '../../../../share/share.module';
     Chart1RoutingModule
   ]
 })
-export class Chart1Module { }
+export class Chart1Module {
+}

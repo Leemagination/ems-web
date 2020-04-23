@@ -5,18 +5,24 @@ import {
 } from '@angular/router';
 
 export class RouteTabReuseStrategy implements RouteReuseStrategy {
-  private reuseRoute: { [key: string]: DetachedRouteHandle } = {};
+  private static reuseRoute: { [key: string]: DetachedRouteHandle } = {};
+  private static deleteUrl: string;
+
+  /** 删除路由快照,注销组件 */
+  public static deleteRouteSnapshot(url: string): void {
+    RouteTabReuseStrategy.deleteUrl = url;
+  }
 
   retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle | null {
     if (!route.routeConfig || route.routeConfig.loadChildren) {
       return null;
     }
-    return this.reuseRoute[this.getRouteUrl(route)];
+    return RouteTabReuseStrategy.reuseRoute[this.getRouteUrl(route)];
   }
 
   shouldAttach(route: ActivatedRouteSnapshot): boolean {
     return (
-      !!route.routeConfig && !!this.reuseRoute[this.getRouteUrl(route)]
+      !!route.routeConfig && !!RouteTabReuseStrategy.reuseRoute[this.getRouteUrl(route)]
     );
   }
 
@@ -32,10 +38,16 @@ export class RouteTabReuseStrategy implements RouteReuseStrategy {
   }
 
   store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle | null): void {
-    if (!handle) {
+    if (route['_routerState'].url === RouteTabReuseStrategy.deleteUrl) {
+      const cache: any = handle;
+      const componentRef = cache?.componentRef;
+      if (componentRef) {
+        componentRef.destroy();
+      }
+      RouteTabReuseStrategy.deleteUrl = null;
       return;
     }
-    this.reuseRoute[this.getRouteUrl(route)] = handle;
+    RouteTabReuseStrategy.reuseRoute[this.getRouteUrl(route)] = handle;
   }
 
   private getRouteUrl(route: ActivatedRouteSnapshot) {//获取当前路由路径
