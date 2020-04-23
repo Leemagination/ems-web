@@ -70,8 +70,8 @@ export class NavigationBarService {
     }
     const menu = this.menuService.findMenuByUrl(url);
     if (!menu) {
-      console.error(`菜单栏不存在${url}路径!`);
-      this.router.navigateByUrl('/home');
+    /*  console.error(`菜单栏不存在${url}路径!`);
+      this.router.navigateByUrl('/home');*/
       return;
     }
     return {

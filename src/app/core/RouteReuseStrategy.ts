@@ -47,11 +47,12 @@ export class RouteTabReuseStrategy implements RouteReuseStrategy {
       RouteTabReuseStrategy.deleteUrl = null;
       return;
     }
+    console.log(RouteTabReuseStrategy.reuseRoute)
     RouteTabReuseStrategy.reuseRoute[this.getRouteUrl(route)] = handle;
   }
 
   private getRouteUrl(route: ActivatedRouteSnapshot) {//获取当前路由路径
-    return route['_routerState'].url;
+    return route['_routerState'].url.replace(/\//g, '_');
   }
 
 }

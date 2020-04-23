@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation-bar.component.scss']
 })
 export class NavigationBarComponent implements OnInit {
+  drawVisible = false;
 
   constructor(public navigationBarService: NavigationBarService,
               public menuService: MenuBarService,
@@ -20,6 +21,10 @@ export class NavigationBarComponent implements OnInit {
 
   routerLinkChange(index) {
     this.router.navigateByUrl(this.navigationBarService.tabs[index].routerLink);
+  }
+
+  logout() {
+    this.router.navigateByUrl('/login');
   }
 
 }
