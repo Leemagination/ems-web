@@ -13,14 +13,28 @@ export class RouteTabReuseStrategy implements RouteReuseStrategy {
     RouteTabReuseStrategy.deleteUrl = url;
   }
 
+  public static clearAllReuseRoute() {
+    for (const reuseRouteKey in RouteTabReuseStrategy.reuseRoute) {
+      const cache: any = reuseRouteKey;
+      const componentRef = cache?.componentRef;
+      if (componentRef) {
+        componentRef.destroy();
+      }
+    }
+    RouteTabReuseStrategy.reuseRoute = {};
+  }
+
   retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle | null {
     if (!route.routeConfig || route.routeConfig.loadChildren) {
       return null;
     }
-    return RouteTabReuseStrategy.reuseRoute[this.getRouteUrl(route)];
+    return RouteTabReuseStrategy.reuseRoute[this.getRouteUrl(route)] ? RouteTabReuseStrategy.reuseRoute[this.getRouteUrl(route)] : null;
   }
 
   shouldAttach(route: ActivatedRouteSnapshot): boolean {
+    if (route['_routerState'].url === '/login') {//退出登录注销组件
+      RouteTabReuseStrategy.clearAllReuseRoute();
+    }
     return (
       !!route.routeConfig && !!RouteTabReuseStrategy.reuseRoute[this.getRouteUrl(route)]
     );
@@ -47,12 +61,12 @@ export class RouteTabReuseStrategy implements RouteReuseStrategy {
       RouteTabReuseStrategy.deleteUrl = null;
       return;
     }
-    console.log(RouteTabReuseStrategy.reuseRoute)
     RouteTabReuseStrategy.reuseRoute[this.getRouteUrl(route)] = handle;
   }
 
   private getRouteUrl(route: ActivatedRouteSnapshot) {//获取当前路由路径
     return route['_routerState'].url.replace(/\//g, '_');
   }
+
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationBarService } from '../../../core/services/navigation-bar.service';
 import { MenuBarService } from '../../../core/services/menu-bar.service';
 import { Router } from '@angular/router';
+import { RouteTabReuseStrategy } from '../../../core/RouteReuseStrategy';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -24,6 +25,7 @@ export class NavigationBarComponent implements OnInit {
   }
 
   logout() {
+    RouteTabReuseStrategy.clearAllReuseRoute();
     this.router.navigateByUrl('/login');
   }
 
