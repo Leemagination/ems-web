@@ -1,4 +1,6 @@
-<p>chart1 works!</p>
-<input nz-input [(ngModel)]="chart1Test"/>
-<button nz-button >11</button>
-<router-outlet></router-outlet>
+<div nz-row>
+  <div nz-col [nzSpan]="14" class="normalShaow" style="height:500px;position: relative;">
+    <div #barChart style="height:100%;width:100%"></div>
+  </div>
+  <div nz-col [nzSpan]="8" [nzOffset]="1" class="normalShaow"></div>
+</div>
