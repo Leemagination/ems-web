@@ -2,7 +2,7 @@
   "name": "ems-web",
   "version": "0.0.0",
   "scripts": {
-    "prepare": "patch-package",
+    "postinstall": "patch-package",
     "ng": "ng",
     "start": "ng serve --host=0.0.0.0 --port=8080 --o",
     "hmr": "ng serve --configuration=hmr --host=0.0.0.0 --port=8080 --o",

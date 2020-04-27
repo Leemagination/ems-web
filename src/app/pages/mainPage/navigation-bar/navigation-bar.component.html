@@ -4,9 +4,12 @@
             (click)="menuService.isCollapsed=!menuService.isCollapsed">
       <i nz-icon [nzType]="menuService.isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
     </button>
+    <img src="./../../../assets/img/demo.png" alt="" width="240" class="imgLogo"
+         [ngStyle]="{opacity:menuService.isCollapsed?0:1}">
   </div>
   <div class="toolBar">
-    <i  (click)="drawVisible=true" nz-icon nzType="form" nzTheme="outline" style="font-size: 20px;vertical-align: middle;cursor:pointer;"></i>
+    <i (click)="drawVisible=true" nz-icon nzType="form" nzTheme="outline"
+       style="font-size: 20px;vertical-align: middle;cursor:pointer;"></i>
     <nz-avatar nzIcon="user" nz-dropdown [nzDropdownMenu]="UserMenu" style="margin:0 12px;cursor: pointer;"
                nzSrc="./../../../assets/img/avatar.png"></nz-avatar>
     <app-language-change-modal></app-language-change-modal>
@@ -31,11 +34,13 @@
     <li nz-menu-item>{{'个人中心'|translate}}</li>
     <li nz-menu-item>{{'修改密码'|translate}}</li>
     <li nz-menu-item (click)="logout()">{{'退出登录'|translate}}
-      <i nz-icon nzType="poweroff" nzTheme="outline" style="margin-left:8px;vertical-align: middle;font-size: 14px;color:rgba(255,0,0,0.64)"></i>
+      <i nz-icon nzType="poweroff" nzTheme="outline"
+         style="margin-left:8px;vertical-align: middle;font-size: 14px;color:rgba(255,0,0,0.64)"></i>
     </li>
   </ul>
 </nz-dropdown-menu>
-<nz-drawer [nzClosable]="true" [nzVisible]="drawVisible" [nzPlacement]="'top'" nzTitle="个人待办项" (nzOnClose)="drawVisible=false" nzHeight="400">
+<nz-drawer [nzClosable]="true" [nzVisible]="drawVisible" [nzPlacement]="'top'" nzTitle="个人待办项"
+           (nzOnClose)="drawVisible=false" nzHeight="400">
   <p>Some contents...</p>
   <p>Some contents...</p>
   <p>Some contents...</p>

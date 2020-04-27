@@ -14,13 +14,15 @@ interface NavigationTab {
 })
 
 export class NavigationBarService {
-  public tabs: NavigationTab[] = [
-    {tabTitle: '首页', routerLink: '/home', closeable: false}
-  ];
+  public tabs: NavigationTab[];
   public tabIndex = 0;
 
   constructor(private menuService: MenuBarService, private router: Router) {
+    this.initTab();
+  }
 
+  initTab() {
+    this.tabs = [{tabTitle: '首页', routerLink: '/home', closeable: false}];
   }
 
   addTab(tab: NavigationTab, redirectNewTab = true): void {
@@ -70,8 +72,8 @@ export class NavigationBarService {
     }
     const menu = this.menuService.findMenuByUrl(url);
     if (!menu) {
-    /*  console.error(`菜单栏不存在${url}路径!`);
-      this.router.navigateByUrl('/home');*/
+      /*  console.error(`菜单栏不存在${url}路径!`);
+        this.router.navigateByUrl('/home');*/
       return;
     }
     return {

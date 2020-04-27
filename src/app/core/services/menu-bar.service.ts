@@ -32,29 +32,40 @@ export class MenuBarService {
     },
     {
       menuTitle: '图表',
-      icon: 'bars',
+      icon: 'bar-chart',
       subMenu: [
-        {menuTitle: '图表1', routerLink: '/chart1'},
-        {menuTitle: '图表2', routerLink: '/chart2'},
-        {menuTitle: '图表3', routerLink: '/chart1/test1'}
+        {menuTitle: '图表页1', routerLink: '/chart1'},
+        {menuTitle: '图表页2', routerLink: '/chart2'}
       ]
     },
     {
       menuTitle: '表格',
-      icon: 'question',
+      icon: 'table',
       subMenu: [
-        {menuTitle: '简单表格页', routerLink: '/testModule/test1'},
-        {menuTitle: '复杂表格页', routerLink: '/testModule/test2'},
+        {menuTitle: '基础表格页', routerLink: '/basicTable'},
+        {menuTitle: '复杂表格页', routerLink: '/complexTable'},
       ]
     },
     {
       menuTitle: '表单',
-      icon: 'bars'
+      icon: 'snippets',
+      subMenu: [
+        {menuTitle: '基础表单', routerLink: '/basicForm'},
+        {menuTitle: '分步表单', routerLink: '/stepForm'}
+      ]
     },
     {
-      menuTitle: '错误处理',
-      icon: 'bars'
-    }
+      menuTitle: '功能演示',
+      icon: 'appstore',
+      subMenu: [
+        {menuTitle: '权限控制', icon: 'exclamation-circle', routerLink: '/authorityControl'},
+        {menuTitle: '错误处理', icon: 'warning', routerLink: '/handleError'},
+        {menuTitle: '打印', icon: 'printer', routerLink: '/print'},
+        {menuTitle: '下载', icon: 'download', routerLink: '/download'},
+        {menuTitle: '页面跳转', icon: 'swap', routerLink: '/tabChange'},
+      ]
+    },
+
   ];
 
   constructor() {

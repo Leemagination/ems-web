@@ -27,6 +27,13 @@
     width: var(--MenuBarWidth);
     transition: var(--MenuTransition);
 
+    .imgLogo{
+      transition: opacity 0.2s linear;
+      clip: rect(0,160px,var(--NavigationBarHeight),0);
+      position: absolute;
+      top:16px;
+    }
+
     ::ng-deep .ant-btn-primary {
       color: #1890ff;
       background-color: #ffffff;

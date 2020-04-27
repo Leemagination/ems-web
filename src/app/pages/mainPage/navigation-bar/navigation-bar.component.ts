@@ -26,7 +26,9 @@ export class NavigationBarComponent implements OnInit {
 
   logout() {
     RouteTabReuseStrategy.clearAllReuseRoute();
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/login').then(() => {
+      this.navigationBarService.initTab();
+    });
   }
 
 }
