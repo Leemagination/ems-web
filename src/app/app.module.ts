@@ -10,7 +10,9 @@ import { DelonMockModule } from '@delon/mock';
 import { delonMock } from '../../mock/mock';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
+import {registerLocaleData} from '@angular/common';
+import zh from '@angular/common/locales/zh';
+registerLocaleData(zh);
 
 @NgModule({
   declarations: [
