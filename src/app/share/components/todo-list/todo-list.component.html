@@ -1,0 +1,40 @@
+<div>
+  <ng-container *ngFor="let todo of todoList;let i=index">
+    <div class="todoContainer"
+         [ngClass]="{'completeTodo':todo.complete,'overdueTodo':checkTime(todo),'nearTodo':nearTime(todo)}">
+      <div class="todoContentContainer" [title]="todo.content">
+        <span *ngIf="!todo.edit;else todoContentTemplate">{{todo.content}}</span>
+        <ng-template #todoContentTemplate>
+        <textarea style="width:100%;max-height: 70px;" nz-input [(ngModel)]="todo.content"
+                  placeholder="待办内容"></textarea>
+        </ng-template>
+      </div>
+      <div class="todoTimeContainer">
+        <span *ngIf="!todo.edit;else todoTimeTemplate"><i nz-icon nzType="clock-circle" nzTheme="outline"
+                                                          style="margin-right:6px;"></i>{{handleDate(todo.date)}}</span>
+        <span *ngIf="todo.edit" style="float:right">
+          <i (click)="todo.edit=false;todo.complete=false;saveTodo()" style="color:deepskyblue;" nz-icon
+             nzType="check-circle"
+             nzTheme="outline"></i>
+        </span>
+        <span *ngIf="!todo.edit" style="float:right;">
+          <i (click)="todo.edit=true" style="cursor: pointer;color:deepskyblue" nz-icon nzType="edit"
+             nzTheme="outline"></i>
+          <i (click)="todo.complete=!todo.complete;saveTodo()" style="cursor:pointer;color:#0ad00a7d;margin:0 16px;"
+             nz-icon [nzType]="todo.complete?'redo':'check-circle'" nzTheme="outline"></i>
+          <i (click)="deleteTodo(i)" style="cursor:pointer;color:rgba(255,0,0,0.61);" nz-icon nzType="close-circle"
+             nzTheme="outline"></i>
+        </span>
+        <ng-template #todoTimeTemplate>
+          <nz-date-picker style="width:60%;"
+                          nzShowTime
+                          nzFormat="yyyy-MM-dd HH:mm:ss"
+                          nzPlaceHolder="待办时间"
+                          [nzAllowClear]="false"
+                          [(ngModel)]="todo.date"
+          ></nz-date-picker>
+        </ng-template>
+      </div>
+    </div>
+  </ng-container>
+</div>

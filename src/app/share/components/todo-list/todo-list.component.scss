@@ -1,0 +1,37 @@
+.todoContainer {
+  margin: 16px 0;
+  max-height: 120px;
+  border: 2px solid #2fb2ffe0;
+  border-radius: 6px;
+  text-align: left;
+
+  .todoContentContainer {
+    padding: 10px 12px;
+    max-height: 80px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .todoTimeContainer {
+    font-size: 16px;
+    padding: 0 12px;
+    height: 40px;
+    line-height: 40px;
+    border-top: 1px solid rgba(171, 171, 171, 0.24)
+  }
+}
+
+
+.completeTodo {
+  border-color: #0ad00a7d;
+}
+
+.overdueTodo {
+  border-color: rgba(255, 0, 0, 0.59);
+}
+
+.nearTodo {
+  border-color: rgba(255, 201, 10, 0.7);
+}

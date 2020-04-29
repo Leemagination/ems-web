@@ -27,11 +27,11 @@
     width: var(--MenuBarWidth);
     transition: var(--MenuTransition);
 
-    .imgLogo{
+    .imgLogo {
       transition: opacity 0.2s linear;
-      clip: rect(0,160px,var(--NavigationBarHeight),0);
+      clip: rect(0, 160px, var(--NavigationBarHeight), 0);
       position: absolute;
-      top:16px;
+      top: 16px;
     }
 
     ::ng-deep .ant-btn-primary {
@@ -79,7 +79,7 @@
       box-shadow: 0 0 8px 2px #9a9a9a;
     }
 
-    ::ng-deep .ant-tabs-nav .ant-tabs-tab:hover{
+    ::ng-deep .ant-tabs-nav .ant-tabs-tab:hover {
       background: white;
       border-radius: 10px 10px 0 0;
       box-shadow: 0 0 8px 2px #9a9a9a;
@@ -97,7 +97,7 @@
       overflow: visible;
     }
 
-    ::ng-deep .ant-tabs-nav-scroll{
+    ::ng-deep .ant-tabs-nav-scroll {
       margin-left: 20px;
     }
 
@@ -115,4 +115,9 @@
     float: right;
     min-width: var(--toolBarWidth);
   }
+}
+
+.addTodoForm {
+  position: absolute;
+  transition: all linear 0.3s;
 }

@@ -11,6 +11,8 @@ import { RouteTabReuseStrategy } from '../../../core/RouteReuseStrategy';
 })
 export class NavigationBarComponent implements OnInit {
   drawVisible = false;
+  addingTodo = false;
+
 
   constructor(public navigationBarService: NavigationBarService,
               public menuService: MenuBarService,

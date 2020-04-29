@@ -1,0 +1,16 @@
+<textarea style="width:100%;min-height: 120px;" nz-input [(ngModel)]="todoParams.todoContent"
+          placeholder="待办内容"></textarea>
+<nz-date-picker style="width:100%;margin-top: 10px;"
+                nzShowTime
+                nzFormat="yyyy-MM-dd HH:mm:ss"
+                nzPlaceHolder="待办时间"
+                [(ngModel)]="todoParams.todoDate"
+></nz-date-picker>
+<div style="margin-top: 10px;">
+  <button nz-button (click)="clickCancel()" style="width:40%;"><i nz-icon nzType="close" nzTheme="outline"></i></button>
+
+  <button nz-button (click)="clickOk()" style="width:40%;margin-left: 20%;"
+          [disabled]="!todoParams.todoContent.trim()||!todoParams.todoDate">
+    <i nz-icon nzType="check" nzTheme="outline"></i>
+  </button>
+</div>

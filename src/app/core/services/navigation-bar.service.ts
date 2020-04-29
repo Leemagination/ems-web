@@ -37,6 +37,11 @@ export class NavigationBarService {
 
   removeTab(tabIndex: number): void {
     RouteTabReuseStrategy.deleteRouteSnapshot(this.tabs[tabIndex].routerLink);
+    if (tabIndex === this.tabs.length - 1) {
+      this.activeTab(tabIndex - 1);
+    } else {
+      this.activeTab(tabIndex + 1);
+    }
     this.tabs = this.tabs.filter((item, index) => {
       return tabIndex !== index;
     });
@@ -46,6 +51,10 @@ export class NavigationBarService {
     if (tabIndex >= 0 && tabIndex < this.tabs.length) {
       this.tabIndex = tabIndex;
     }
+  }
+
+  activeTab(tabIndex: number) {
+    this.router.navigateByUrl(this.tabs[tabIndex].routerLink);
   }
 
   findTabIndexByUrl(url: string, addNewTab = false): number {
