@@ -1,1 +1,83 @@
-<p>step-form works!</p>
+<div class="normalShaow" style="padding:20px 0;">
+
+  <div style="width:80%;margin:0 auto;">
+    <nz-steps [nzCurrent]="stepIndex" style="width:80%;">
+      <nz-step nzTitle="Finished"></nz-step>
+      <nz-step nzTitle="In Progress"></nz-step>
+      <nz-step nzTitle="Waiting"></nz-step>
+    </nz-steps>
+  </div>
+  <form nz-form [formGroup]="validateForm1">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="payAccount" nzRequired>
+        <span>付款账号</span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+        <input nz-input id="payAccount" formControlName="payAccount" placeholder="请输入6-26位字符"/>
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            请输入付款账号!
+          </ng-container>
+          <ng-container *ngIf="control.hasError('maxlength')||control.hasError('minlength')">
+            请输入6-26位字符!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="receiptAccount" nzRequired>
+        <span>收款账号</span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl2">
+        <nz-input-group nzCompact>
+          <nz-select formControlName="receiptType">
+            <nz-option [nzLabel]="'微信'" [nzValue]="'支付宝'"></nz-option>
+            <nz-option [nzLabel]="'微信'" [nzValue]="'支付宝'"></nz-option>
+            <nz-option [nzLabel]="'银行卡'" [nzValue]="'银行卡'"></nz-option>
+          </nz-select>
+          <input nz-input placeholder="请输入收款账号" style="width: 200px;" formControlName="receiptAccount"/>
+        </nz-input-group>
+        <ng-template #errorTpl2 let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            请输入付款账号!
+          </ng-container>
+          <ng-container *ngIf="control.hasError('maxlength')||control.hasError('minlength')">
+            请输入6-26位字符!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="receiptName" nzRequired>
+        <span>收款姓名</span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl3">
+        <input nz-input id="receiptName" formControlName="receiptName" placeholder="请输入6-10位字符"/>
+        <ng-template #errorTpl3 let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            请输入收款账号!
+          </ng-container>
+          <ng-container *ngIf="control.hasError('maxlength')||control.hasError('minlength')">
+            请输入6-10位字符!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="money" nzRequired>
+        <span>收款金额</span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl4">
+        <input nz-input id="money" formControlName="money" placeholder="请输入金额"/>
+        <ng-template #errorTpl4 let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            请输入收款金额!
+          </ng-container>
+          <ng-container *ngIf="control.hasError('pattern')">
+            请输入正确数字金额!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>
