@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UtilityService } from '../../../core/services/utility.service';
 
 export interface TodoItem {
@@ -50,7 +50,6 @@ export class TodoListComponent implements OnInit {
         });
       }
     }
-    console.log(this.todoList);
   }
 
   handleDate(date) {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { NavigationBarService } from '../../core/services/navigation-bar.service';
-import { RouteTabReuseStrategy } from '../../core/RouteReuseStrategy';
+
 
 @Component({
   selector: 'app-main-page',
