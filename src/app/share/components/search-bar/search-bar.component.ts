@@ -28,6 +28,9 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.moveSearchItem();
+    if (this.buttonGroup.nativeElement.children.length) {
+      this.buttonGroup.nativeElement.style['marginRight'] = '20px';
+    }
   }
 
 
