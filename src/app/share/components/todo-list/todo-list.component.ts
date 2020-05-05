@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UtilityService } from '../../../core/services/utility.service';
+import { formatDate } from '../../function/dateUtil';
 
 export interface TodoItem {
   content: string;
@@ -17,7 +17,7 @@ export interface TodoItem {
 export class TodoListComponent implements OnInit {
   todoList: TodoItem[] = [];
 
-  constructor(public utilityService: UtilityService) {
+  constructor() {
   }
 
   ngOnInit(): void {
@@ -53,7 +53,7 @@ export class TodoListComponent implements OnInit {
   }
 
   handleDate(date) {
-    return this.utilityService.formatDate(new Date(date).getTime());
+    return formatDate(new Date(date).getTime());
   }
 
   saveTodo() {

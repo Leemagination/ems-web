@@ -3,7 +3,7 @@ import echarts from 'echarts';
 import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import Mock from 'mockjs';
-import { UtilityService } from '../../../../core/services/utility.service';
+import { formatDate } from '../../../../share/function/dateUtil';
 
 @Component({
   selector: 'app-chart1',
@@ -106,7 +106,7 @@ export class Chart1Component implements OnInit, AfterViewInit, OnDestroy {
     this.subject$.next($event);
   }
 
-  constructor(private utilityService: UtilityService) {
+  constructor() {
 
   }
 
@@ -148,7 +148,7 @@ export class Chart1Component implements OnInit, AfterViewInit, OnDestroy {
         break;
     }
     for (let i = 0; i <= diff; i++) {
-      xAxis.unshift(this.utilityService.formatDate(new Date(this.dateRange[1].getTime() - 1000 * 60 * 60 * 24 * i).getTime(), 'yyyy-MM-dd'));
+      xAxis.unshift(formatDate(new Date(this.dateRange[1].getTime() - 1000 * 60 * 60 * 24 * i).getTime(), 'yyyy-MM-dd'));
     }
     this.mockBarData(xAxis);
   }
