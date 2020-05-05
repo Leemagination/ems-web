@@ -34,8 +34,8 @@ export class MenuBarService {
       menuTitle: '图表',
       icon: 'bar-chart',
       subMenu: [
-        {menuTitle: '图表页1', routerLink: '/chart1'},
-        {menuTitle: '图表页2', routerLink: '/chart2'}
+        {menuTitle: '图表页', routerLink: '/chart1'},
+       /* {menuTitle: '图表页2', routerLink: '/chart2'}*/
       ]
     },
     {
@@ -63,6 +63,7 @@ export class MenuBarService {
         {menuTitle: '打印', icon: 'printer', routerLink: '/print'},
         {menuTitle: '下载', icon: 'download', routerLink: '/download'},
         {menuTitle: '页面跳转', icon: 'swap', routerLink: '/tabChange'},
+        {menuTitle: 'iframe展示', icon: 'taobao-circle', routerLink: '/iframe'},
       ]
     },
 

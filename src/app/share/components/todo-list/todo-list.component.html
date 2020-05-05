@@ -20,7 +20,7 @@
         <span *ngIf="!todo.edit" style="float:right;">
           <i (click)="todo.edit=true" style="cursor: pointer;color:deepskyblue" nz-icon nzType="edit"
              nzTheme="outline"></i>
-          <i (click)="todo.complete=!todo.complete;saveTodo()" style="cursor:pointer;color:#0ad00a7d;margin:0 16px;"
+          <i (click)="todo.complete=!todo.complete;saveTodo()" style="cursor:pointer;color:#0ab80a9c;margin:0 16px;"
              nz-icon [nzType]="todo.complete?'redo':'check-circle'" nzTheme="outline"></i>
           <i (click)="deleteTodo(i)" style="cursor:pointer;color:rgba(255,0,0,0.61);" nz-icon nzType="close-circle"
              nzTheme="outline"></i>

@@ -22,6 +22,7 @@ const routes: Routes = [{
     {path: 'download', loadChildren: () => import('./download/download.module').then(m => m.DownloadModule)},
     {path: 'handleError', loadChildren: () => import('./handle-error/handle-error.module').then(m => m.HandleErrorModule)},
     {path: 'print', loadChildren: () => import('./print/print.module').then(m => m.PrintModule)},
+    {path: 'iframe', loadChildren: () => import('./iframe/iframe.module').then(m => m.IframeModule)},
     {path: 'tabChange', loadChildren: () => import('./tab-change/tab-change.module').then(m => m.TabChangeModule)},
     {
       path: '**', redirectTo: 'home', pathMatch: 'full'
