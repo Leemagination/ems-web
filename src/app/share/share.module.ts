@@ -7,10 +7,12 @@ import { RouterModule } from '@angular/router';
 import { LanguageChangeModalComponent } from './components/language-change-modal/language-change-modal.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AddTodoComponent } from './components/todo-list/add-todo/add-todo.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { SearchItemComponent } from './components/search-item/search-item.component';
 
 
 @NgModule({
-  declarations: [LanguageChangeModalComponent, TodoListComponent, AddTodoComponent],
+  declarations: [LanguageChangeModalComponent, TodoListComponent, AddTodoComponent, SearchBarComponent, SearchItemComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -27,7 +29,9 @@ import { AddTodoComponent } from './components/todo-list/add-todo/add-todo.compo
     TranslateModule,
     LanguageChangeModalComponent,
     TodoListComponent,
-    AddTodoComponent
+    AddTodoComponent,
+    SearchBarComponent,
+    SearchItemComponent
   ]
 })
 export class ShareModule {

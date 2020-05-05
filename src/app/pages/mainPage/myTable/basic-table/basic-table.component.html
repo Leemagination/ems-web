@@ -1,1 +1,24 @@
-<p>basic-table works!</p>
+<div class="normalShaow" style="padding:20px;">
+  <app-search-bar (searchEvent)="search()" (resetEvent)="reset()">
+    <ng-container ngProjectAs="operationButton">
+      <button nz-button nzType="primary">111</button>
+      <button nz-button nzType="primary">222</button>
+      <button nz-button nzType="primary">333</button>
+    </ng-container>
+    <ng-container ngProjectAs="searchShowArea">
+      <app-search-item searchLabel="测试" [labelVisible]="!!value">
+        <input nz-input placeholder="Basic 1" style="width:200px;" [(ngModel)]="value"/>
+      </app-search-item>
+      <app-search-item searchLabel="测试" [labelVisible]="!!value">
+        <input nz-input placeholder="Basic 2" style="width:200px;" [(ngModel)]="value"/>
+      </app-search-item>
+      <app-search-item searchLabel="测试" [labelVisible]="!!value">
+        <input nz-input placeholder="Basic 3" style="width:200px;" [(ngModel)]="value"/>
+      </app-search-item>
+      <app-search-item searchLabel="测试" [labelVisible]="!!value">
+        <input nz-input placeholder="Basic 4" style="width:200px;" [(ngModel)]="value"/>
+      </app-search-item>
+    </ng-container>
+  </app-search-bar>
+</div>
+

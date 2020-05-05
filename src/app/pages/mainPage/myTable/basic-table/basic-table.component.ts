@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./basic-table.component.scss']
 })
 export class BasicTableComponent implements OnInit {
+  value = null;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+
+  search() {
+    console.log('搜索');
+  }
+
+  reset() {
+    console.log('重置');
+  }
 }

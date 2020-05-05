@@ -1,0 +1,19 @@
+.searchItemStyle {
+  display: inline-block;
+  width:auto;
+  position: relative;
+  margin:10px;
+  .tinyLabel {
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(255, 255, 255);
+    color: #b5b5b5;
+    top: -15px;
+    left: 10px;
+    width: 84%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity linear 0.2s;
+  }
+}
