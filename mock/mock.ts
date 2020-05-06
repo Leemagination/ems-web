@@ -15,17 +15,17 @@ const mockRule = {
 };
 export const delonMock = {
   requestURL: {
-    'GET /delonApi': Mock.mock(mockRule),
-    'GET /fail401': () => {
+    'GET http://ems-web/delonApi': Mock.mock(mockRule),
+    'GET http://ems-web/fail401': () => {
       throw  new MockStatusError(401);
     },
-    'GET /fail403': () => {
+    'GET http://ems-web/fail403': () => {
       throw  new MockStatusError(403);
     },
-    'GET /fail404': () => {
+    'GET http://ems-web/fail404': () => {
       throw  new MockStatusError(404);
     },
-    'GET /fail500': () => {
+    'GET http://ems-web/fail500': () => {
       throw  new MockStatusError(500);
     }
   }

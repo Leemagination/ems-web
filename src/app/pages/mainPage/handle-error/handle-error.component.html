@@ -1,1 +1,7 @@
-<p>handle-error works!</p>
+<div>
+  <button nz-button (click)="errorRequest(401)">未登录</button>
+  <button nz-button (click)="errorRequest(403)">请求拒绝</button>
+  <button nz-button (click)="errorRequest(404)">404请求</button>
+  <button nz-button (click)="errorRequest(500)">服务器错误</button>
+  <h2>可在控制台console界面查看模拟请求</h2>
+</div>

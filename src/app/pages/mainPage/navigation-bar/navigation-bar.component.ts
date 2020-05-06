@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationBarService } from '../../../core/services/navigation-bar.service';
 import { MenuBarService } from '../../../core/services/menu-bar.service';
 import { Router } from '@angular/router';
-import { RouteTabReuseStrategy } from '../../../core/RouteReuseStrategy';
+import { BaseService } from '../../../core/base-service.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -16,7 +16,9 @@ export class NavigationBarComponent implements OnInit {
 
   constructor(public navigationBarService: NavigationBarService,
               public menuService: MenuBarService,
-              private router: Router) {
+              private router: Router,
+              private baseService: BaseService
+  ) {
   }
 
   ngOnInit(): void {
@@ -27,10 +29,7 @@ export class NavigationBarComponent implements OnInit {
   }
 
   logout() {
-    RouteTabReuseStrategy.clearAllReuseRoute();
-    this.router.navigateByUrl('/login').then(() => {
-      this.navigationBarService.initTab();
-    });
+    this.baseService.logout();
   }
 
 }

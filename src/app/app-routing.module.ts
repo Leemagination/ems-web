@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainPageComponent } from './pages/mainPage/main-page.component';
+import { LoggedGuard } from './core/routerGuard/logged-guard.service';
 
 
 const routes: Routes = [
@@ -16,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./pages/mainPage/main-page.module').then(m => m.MainPageModule)
+    loadChildren: () => import('./pages/mainPage/main-page.module').then(m => m.MainPageModule),
+    canActivate: [LoggedGuard]
   },
   {
     path: '**', redirectTo: '', pathMatch: 'full'

@@ -1,8 +1,9 @@
 .searchItemStyle {
   display: inline-block;
-  width:auto;
+  width: auto;
   position: relative;
-  margin:0 20px 10px 0;
+  margin: 0 20px 10px 0;
+
   .tinyLabel {
     position: absolute;
     z-index: 1;
@@ -14,6 +15,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    opacity: 0;
     transition: opacity linear 0.2s;
   }
 }

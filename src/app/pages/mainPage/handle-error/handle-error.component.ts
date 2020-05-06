@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HandleErrorService } from './handle-error.service';
+import { CookieService } from '../../../core/services/cookie.service';
 
 @Component({
   selector: 'app-handle-error',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HandleErrorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private handleService: HandleErrorService,
+              private cookieService: CookieService) {
+  }
 
   ngOnInit(): void {
+  }
+
+  errorRequest(code) {
+    this.handleService.handleErrorMethod(code).subscribe(data => {
+      console.log(data);
+    }, error => {
+      console.error(error);
+    });
   }
 
 }

@@ -4,12 +4,14 @@ import { RouteReuseStrategy } from '@angular/router';
 import { RouteTabReuseStrategy } from './RouteReuseStrategy';
 import { translateModule } from './i18n/translate';
 import { coreServices } from './services';
+import { routerGuard } from './routerGuard';
 
 @NgModule({
   declarations: [],
   imports: [translateModule],
   providers: [
     httpInterceptorProviders,
+    ...routerGuard,
     ...coreServices,
     {provide: RouteReuseStrategy, useClass: RouteTabReuseStrategy}
   ]

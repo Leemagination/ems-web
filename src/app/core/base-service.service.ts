@@ -1,35 +1,86 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { RouteTabReuseStrategy } from './RouteReuseStrategy';
+import { CookieService } from './services/cookie.service';
+import { Router } from '@angular/router';
+import { NavigationBarService } from './services/navigation-bar.service';
+
+export interface RequestOptions {
+  headers?: HttpHeaders | {
+    [header: string]: string | string[];
+  };
+  observe?: 'body' | 'events' | 'response';
+  params?: HttpParams | {
+    [param: string]: string | string[];
+  };
+  reportProgress?: boolean;
+  responseType?: 'arraybuffer' | 'blob' | 'json' | 'text';
+  withCredentials?: boolean;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaseService {
-   url = `/delonApi1111`;
-   url2 = `http://172.16.11.39:9696/testApi`;
-   url3 = `/fail401`;
-  constructor(private http: HttpClient) {
+
+  constructor(private http: HttpClient, private cookieService: CookieService,
+              private router: Router,
+              private navigationBarService: NavigationBarService) {
   }
 
-  public getMethod() {
-    return this.http.get(this.url2, {withCredentials: true});
+  public get(url: string, params?: { [param: string]: any }, options?: RequestOptions): Observable<any> {
+    let option = this.defaultOptions();
+    if (params) {
+      option.params = this.parseGetMethodParams(params);
+    }
+    if (options) {
+      option = Object.assign(option, options);
+    }
+    return this.http.get(`${environment.baseUrl}${url}`, option);
   }
 
-  public getMethod2() {
-    return this.http.get(this.url, {withCredentials: true});
+  public post(url: string, params?: { [param: string]: any }, options?: RequestOptions): Observable<any> {
+    let option = this.defaultOptions();
+    if (options) {
+      option = Object.assign(option, options);
+    }
+    return this.http.post(`${environment.baseUrl}${url}`, params ? params : null, option);
   }
 
 
-  public getMethod3() {
-    return this.http.get('/fail401', {withCredentials: true});
+  private parseGetMethodParams(params: object): HttpParams {
+    let urlParams = new HttpParams();
+    if (params) {
+      for (const key in params) {
+        const _data = params[key];
+        urlParams = urlParams.append(key, _data);
+      }
+    }
+    return urlParams;
   }
-  public getMethod4() {
-    return this.http.get('/fail403', {withCredentials: true});
+
+  private defaultOptions(): {
+    observe: 'response',
+    reportProgress: boolean,
+    withCredentials: boolean,
+    params?: { [param: string]: any },
+    responseType: 'json'
+  } {
+    return {
+      observe: 'response',
+      reportProgress: false,
+      withCredentials: false,
+      responseType: 'json'
+    };
   }
-  public getMethod5() {
-    return this.http.get('/fail404', {withCredentials: true});
-  }
-  public getMethod6() {
-    return this.http.get('/fail500', {withCredentials: true});
+
+  logout() {
+    this.cookieService.deleteCookie('Authorization');
+    RouteTabReuseStrategy.clearAllReuseRoute();
+    this.router.navigateByUrl('/login').then(() => {
+      this.navigationBarService.initTab();
+    });
   }
 }
