@@ -1,0 +1,34 @@
+{
+  "/basicTable": {
+    "menuName": "基础表格页",
+    "buttons": ["搜索"]
+  },
+  "/complexTable": {
+    "menuName": "复杂表格页",
+    "buttons": []
+  },
+  "/authorityControl": {
+    "menuName": "权限控制",
+    "buttons": ["按钮3","按钮4"]
+  },
+  "/handleError": {
+    "menuName": "错误处理",
+    "buttons": []
+  },
+  "/print": {
+    "menuName": "打印",
+    "buttons": []
+  },
+  "/download": {
+    "menuName": "下载",
+    "buttons": []
+  },
+  "/tabChange": {
+    "menuName": "页面跳转",
+    "buttons": []
+  },
+  "/iframe": {
+    "menuName": "iframe展示",
+    "buttons": []
+  }
+}

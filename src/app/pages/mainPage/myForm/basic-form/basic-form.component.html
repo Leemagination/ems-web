@@ -2,7 +2,7 @@
   <div class="formButtonContainer">
     <span style="font-size: 20px;font-weight: bold;color: #8d8d8dd6;">个人信息</span>
     <div style="float:right">
-      <button nz-button nzType="primary" style="margin:0 10px;" (click)="clickSave()" [nzLoading]="saveLoading">保存</button>
+      <button nz-button nzType="primary" *buttonAuthority="'保存'" style="margin:0 10px;" (click)="clickSave()" [nzLoading]="saveLoading">保存</button>
       <button nz-button (click)="resetForm()">重置</button>
     </div>
   </div>

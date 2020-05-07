@@ -1,6 +1,6 @@
 <ul nz-menu [nzMode]="'inline'" [nzInlineCollapsed]="menuService.isCollapsed" [nzSelectable]="false">
    <ng-container *ngFor="let menuItem of menuService.menuList">
-     <li nz-menu-item *ngIf="!menuItem.subMenu;else singleMenuItem" [routerLink]="menuItem.routerLink">
+     <li nz-menu-item *ngIf="!menuItem.subMenu&&menuItem.Authorized;else singleMenuItem" [routerLink]="menuItem.routerLink">
            <span title>
             <i *ngIf="!menuItem.icon;else menuIcon" nz-icon [nzType]="'bars'"></i>
                <ng-template #menuIcon>
@@ -10,7 +10,7 @@
            </span>
      </li>
      <ng-template #singleMenuItem>
-       <li nz-submenu>
+       <li nz-submenu *ngIf="menuItem.subMenu.length">
              <span title>
                <i *ngIf="!menuItem.icon;else menuIcon" nz-icon [nzType]="'bars'"></i>
                <ng-template #menuIcon>

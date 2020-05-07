@@ -9,10 +9,11 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AddTodoComponent } from './components/todo-list/add-todo/add-todo.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchItemComponent } from './components/search-item/search-item.component';
+import { ButtonAuthorityDirective } from './directives/button-authority.directive';
 
 
 @NgModule({
-  declarations: [LanguageChangeModalComponent, TodoListComponent, AddTodoComponent, SearchBarComponent, SearchItemComponent],
+  declarations: [LanguageChangeModalComponent, TodoListComponent, AddTodoComponent, SearchBarComponent, SearchItemComponent, ButtonAuthorityDirective],
   imports: [
     CommonModule,
     FormsModule,
@@ -31,7 +32,8 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
     TodoListComponent,
     AddTodoComponent,
     SearchBarComponent,
-    SearchItemComponent
+    SearchItemComponent,
+    ButtonAuthorityDirective
   ]
 })
 export class ShareModule {

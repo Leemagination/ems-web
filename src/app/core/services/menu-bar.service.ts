@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
+import { menuConfig, MenuItem } from '../config/menuConfig';
 
-export interface MenuItem {
-  menuTitle: string;
-  routerLink?: string;
-  icon?: string;
-  subMenu?: MenuItem[];
-}
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +8,9 @@ export interface MenuItem {
 export class MenuBarService {
   private COLLAPSED_WIDTH = 140;
   private _isCollapsed = false;
+  private roleType = ['administrators'];
+  public menuPermission;
+
   get isCollapsed(): boolean {
     return this._isCollapsed;
   }
@@ -25,53 +23,55 @@ export class MenuBarService {
     document.documentElement.style.setProperty('--MenuBarWidth', menuWidth + 'px');
   }
 
-  public menuList: MenuItem[] = [
-    {
-      menuTitle: '常用菜单',
-      subMenu: []
-    },
-    {
-      menuTitle: '图表',
-      icon: 'bar-chart',
-      subMenu: [
-        {menuTitle: '图表页', routerLink: '/chart1'},
-       /* {menuTitle: '图表页2', routerLink: '/chart2'}*/
-      ]
-    },
-    {
-      menuTitle: '表格',
-      icon: 'table',
-      subMenu: [
-        {menuTitle: '基础表格页', routerLink: '/basicTable'},
-        {menuTitle: '复杂表格页', routerLink: '/complexTable'},
-      ]
-    },
-    {
-      menuTitle: '表单',
-      icon: 'snippets',
-      subMenu: [
-        {menuTitle: '基础表单', routerLink: '/basicForm'},
-        {menuTitle: '分步表单', routerLink: '/stepForm'}
-      ]
-    },
-    {
-      menuTitle: '功能演示',
-      icon: 'appstore',
-      subMenu: [
-        {menuTitle: '权限控制', icon: 'exclamation-circle', routerLink: '/authorityControl'},
-        {menuTitle: '错误处理', icon: 'warning', routerLink: '/handleError'},
-        {menuTitle: '打印', icon: 'printer', routerLink: '/print'},
-        {menuTitle: '下载', icon: 'download', routerLink: '/download'},
-        {menuTitle: '页面跳转', icon: 'swap', routerLink: '/tabChange'},
-        {menuTitle: 'iframe展示', icon: 'taobao-circle', routerLink: '/iframe'},
-      ]
-    },
-
-  ];
+  public menuList: MenuItem[] = [];
 
   constructor() {
+    this.loadPermission();
   }
 
+  loadPermission() {//模拟后端权限数据
+    const role = JSON.parse(localStorage.getItem('currentUserRole'));
+    this.roleType = role ? role : ['administrators'];
+    this.menuPermission = {};
+    this.roleType.forEach(type => {
+      let permission;
+      switch (type) {
+        case 'administrators':
+          permission = JSON.parse(JSON.stringify(require('../../../../mock/adminAuthority.json')));
+          break;
+        case 'certainRoleA':
+          permission = JSON.parse(JSON.stringify(require('../../../../mock/roleAAuthority.json')));
+          break;
+        case 'certainRoleB':
+          permission = JSON.parse(JSON.stringify(require('../../../../mock/roleBAuthority.json')));
+          break;
+        case 'guest':
+          permission = JSON.parse(JSON.stringify(require('../../../../mock/guestAuthority.json')));
+          break;
+      }
+      for (const prop in permission) {
+        if (this.menuPermission[prop]) {
+          permission[prop].buttons = Array.from(new Set([...permission[prop].buttons, ...this.menuPermission[prop].buttons]));
+        }
+      }
+      this.menuPermission = Object.assign(this.menuPermission, permission);
+    });
+
+    this.checkMenuValid(menuConfig);
+    this.menuList = menuConfig;
+  }
+
+  checkMenuValid(menu: MenuItem[]) {
+    menu.forEach(item => {
+      if (item.routerLink) {
+        item.Authorized = !!this.menuPermission[item.routerLink];
+      } else {
+        if (item.subMenu) {
+          this.checkMenuValid(item.subMenu);
+        }
+      }
+    });
+  }
 
   findMenuByUrl(url: string): MenuItem {
     return this.recursiveMenu(this.menuList, url);

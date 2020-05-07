@@ -1,0 +1,10 @@
+{
+  "/authorityControl": {
+    "menuName": "权限控制",
+    "buttons": ["按钮4"]
+  },
+  "/handleError": {
+    "menuName": "错误处理",
+    "buttons": []
+  }
+}
