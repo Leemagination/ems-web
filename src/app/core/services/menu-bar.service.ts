@@ -56,19 +56,16 @@ export class MenuBarService {
       }
       this.menuPermission = Object.assign(this.menuPermission, permission);
     });
-
-    this.checkMenuValid(menuConfig);
-    this.menuList = menuConfig;
+    const config = JSON.parse(JSON.stringify(menuConfig));
+    this.checkMenuValid(config);
+    this.menuList = config;
   }
 
   checkMenuValid(menu: MenuItem[]) {
     menu.forEach(item => {
-      if (item.routerLink) {
-        item.Authorized = !!this.menuPermission[item.routerLink];
-      } else {
-        if (item.subMenu) {
-          this.checkMenuValid(item.subMenu);
-        }
+      if (item.subMenu) {
+        item.subMenu = item.subMenu.filter(list => !!this.menuPermission[list.routerLink]);
+        this.checkMenuValid(item.subMenu);
       }
     });
   }

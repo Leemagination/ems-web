@@ -1,22 +1,20 @@
 <ng-container>
-  <ng-container *ngIf="menuItem.Authorized">
-    <li nz-menu-item *ngIf="!menuItem.subMenu;else singleMenuItem"
-        [routerLink]="menuItem.routerLink">
+  <li nz-menu-item *ngIf="!menuItem.subMenu;else singleMenuItem"
+      [routerLink]="menuItem.routerLink">
           <span title>
                 <i *ngIf="menuItem.icon;" nz-icon [nzType]="menuItem.icon"></i>
             <span>{{menuItem.menuTitle}}</span>
           </span>
-    </li>
-    <ng-template #singleMenuItem>
-      <li nz-submenu>
+  </li>
+  <ng-template #singleMenuItem>
+    <li nz-submenu>
             <span title>
           <i *ngIf="menuItem.icon;" nz-icon [nzType]="menuItem.icon"></i>
               <span>{{menuItem.menuTitle}}</span>
             </span>
-        <ul>
-          <app-menu-list *ngFor="let subMenu of menuItem.subMenu" [menuItem]="subMenu"></app-menu-list>
-        </ul>
-      </li>
-    </ng-template>
-  </ng-container>
+      <ul>
+        <app-menu-list *ngFor="let subMenu of menuItem.subMenu" [menuItem]="subMenu"></app-menu-list>
+      </ul>
+    </li>
+  </ng-template>
 </ng-container>
