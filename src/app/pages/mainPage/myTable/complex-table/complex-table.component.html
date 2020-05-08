@@ -1,1 +1,66 @@
-<p>complex-table works!</p>
+<div class="normalShaow" style="padding:20px;">
+  <app-search-bar (searchEvent)="search()" (resetEvent)="reset()">
+    <ng-container ngProjectAs="operationButton">
+      <button nz-button nzType="primary" (click)="openAddModal()">新增</button>
+      <button nz-button nzType="primary" style="margin:0 10px;" (click)="openDeliverModal()">新增发货仓</button>
+      <!-- <button nz-button nzType="primary"></button>-->
+    </ng-container>
+    <ng-container ngProjectAs="searchShowArea">
+      <app-search-item searchLabel="姓名" [labelVisible]="!!searchParams.name">
+        <input nz-input placeholder="姓名" style="width:120px;" [(ngModel)]="searchParams.name"/>
+      </app-search-item>
+      <!--     <app-search-item searchLabel="年龄" [labelVisible]="!!searchParams.age">
+             <input nz-input type="number" placeholder="年龄" style="width:100px;" [(ngModel)]="searchParams.age"/>
+           </app-search-item>-->
+      <app-search-item searchLabel="地址" [labelVisible]="!!searchParams.address">
+        <input nz-input placeholder="地址" style="width:200px;" [(ngModel)]="searchParams.address"/>
+      </app-search-item>
+      <app-search-item searchLabel="电话" [labelVisible]="!!searchParams.telephone">
+        <input nz-input placeholder="电话" style="width:160px;" [(ngModel)]="searchParams.telephone"/>
+      </app-search-item>
+      <app-search-item searchLabel="入职时间" [labelVisible]="searchParams.entryDate&&searchParams.entryDate.length">
+        <nz-range-picker [(ngModel)]="searchParams.entryDate"></nz-range-picker>
+      </app-search-item>
+      <app-search-item searchLabel="备注" [labelVisible]="!!searchParams.remark">
+        <input nz-input placeholder="备注" style="width:200px;" [(ngModel)]="searchParams.remark"/>
+      </app-search-item>
+    </ng-container>
+  </app-search-bar>
+  <div>
+    <nz-table #basicTable [nzData]="dataSet" nzShowSizeChanger>
+      <thead>
+      <tr>
+        <th>订单号</th>
+        <th>订单类型</th>
+        <th>发货仓</th>
+        <th>收货地址</th>
+        <th>状态</th>
+        <th>创建人<br>创建时间</th>
+        <th>修改人<br>修改时间</th>
+        <th>备注</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{data.orderID}}</td>
+        <td>{{data.orderType}}</td>
+        <td>{{data.deliverStorage}}</td>
+        <td>{{data.address}}</td>
+        <td>
+          <nz-switch [(ngModel)]="data.status" nzCheckedChildren="开" nzUnCheckedChildren="关"></nz-switch>
+        </td>
+        <td>{{data.entryDate}}</td>
+        <td>{{data.entryDate}}</td>
+        <td>{{data.remark}}</td>
+        <td>
+          <a>编辑</a>
+          <a style="color:red;margin:0 10px;">删除</a>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
+
+

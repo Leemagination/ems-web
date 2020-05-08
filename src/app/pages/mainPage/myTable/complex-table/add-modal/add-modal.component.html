@@ -1,0 +1,69 @@
+<form nz-form [formGroup]="validateForm">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="orderType" nzRequired>
+      <span>订单类型</span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+      <nz-select formControlName="orderType">
+        <nz-option *ngFor="let option of dropDownService.orderType"
+                   [nzValue]="option.value" [nzLabel]="option.label">
+        </nz-option>
+      </nz-select>
+      <ng-template #errorTpl let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          请选择订单类型!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="deliverStorage" nzRequired>
+      <span>发货仓</span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+      <nz-select formControlName="deliverStorage">
+        <nz-option *ngFor="let option of dropDownService.deliverStorage"
+                   [nzValue]="option.value" [nzLabel]="option.label">
+        </nz-option>
+      </nz-select>
+      <ng-template #errorTpl let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          请选择订单类型!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+<!--  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>密码</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入密码!">
+      <input nz-input type="password" id="password" formControlName="password"/>
+    </nz-form-control>
+  </nz-form-item>-->
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="area" nzRequired>收货地区</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择地区!">
+      <nz-cascader [nzOptions]="dropDownService.chinaArea" formControlName="area" nzShowSearch
+                   [nzPlaceHolder]="' '"></nz-cascader>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" nzRequired>
+      <span>收货详细地址</span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请填写地址">
+      <input nz-input id="address" formControlName="address"/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="area" nzRequired>收货地区</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择地区!">
+      <nz-switch formControlName="status" nzCheckedChildren="开" nzUnCheckedChildren="关"></nz-switch>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="remark">备注</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <textarea nz-input style="min-height: 90px;" id="remark" formControlName="remark"></textarea>
+    </nz-form-control>
+  </nz-form-item>
+</form>

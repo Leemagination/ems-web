@@ -1,0 +1,29 @@
+<nz-table #basicTable [nzData]="dataSet" [nzShowPagination]="false" [nzFrontPagination]="false">
+  <thead>
+  <tr>
+    <th nzWidth="20%">序号</th>
+    <th nzWidth="50%">发货仓</th>
+    <th nzWidth="30%">操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data;let i =index">
+    <td>{{i + 1}}</td>
+    <td>
+      <span *ngIf="!data.editable;else editTemplate">{{data.address}}</span>
+      <ng-template #editTemplate>
+        <input nz-input [(ngModel)]="data.address"/>
+      </ng-template>
+    </td>
+    <td>
+      <a (click)="data.editable=!data.editable">
+        <span *ngIf="!data.editable;else confirmTemplate">编辑</span>
+        <ng-template #confirmTemplate>
+          <span>确定</span>
+        </ng-template>
+      </a>
+      <a style="color:red;margin:0 10px;" (click)="deleteDeliver(i)" *ngIf="!data.editable">删除</a>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
