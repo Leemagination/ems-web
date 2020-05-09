@@ -1,31 +1,28 @@
 export class SearchParams {
-  name: string;
-  age: number;
-  address: string;
-  telephone: number;
-  entryDate: Date[];
-  remark: string;
-
+  orderID: string;
+  orderType: string;
+  deliverStorage: string;
+  area: string[];
+  status: boolean;
   constructor() {
+        this.reset();
   }
 
   getParams() {
     return {
-      name: this.name,
-      age: this.age,
-      address: this.address,
-      telephone: this.telephone,
-      entryDate: this.entryDate,
-      remark: this.remark
+      orderID: this.orderID,
+      orderType: this.orderType,
+      deliverStorage: this.deliverStorage,
+      area: this.area,
+      status: this.status
     };
   }
 
   reset() {
-    this.name = null;
-    this.age = null;
-    this.address = null;
-    this.telephone = null;
-    this.entryDate = null;
-    this.remark = null;
+    this.orderID = null;
+    this.orderType = null;
+    this.deliverStorage = null;
+    this.area = null;
+    this.status = null;
   }
 }

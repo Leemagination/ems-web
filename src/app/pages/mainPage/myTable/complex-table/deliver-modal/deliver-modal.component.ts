@@ -33,6 +33,14 @@ export class DeliverModalComponent implements OnInit {
     });
   }
 
+  editStatusChange(data) {
+    if (data.address.trim()) {
+      data.editable = !data.editable;
+    } else {
+      this.nzMessage.warning('请先输入发货仓!');
+    }
+  }
+
   getParams() {
     if (this.dataSet.some(item => item.editable)) {
       this.nzMessage.warning('请先编辑完成表格中的发货仓!');

@@ -4,7 +4,7 @@
   <div nz-row>
     <span nz-col nzSpan="4" style="text-align: right;margin-right:12px;">管理员权限</span>
     <nz-switch [(ngModel)]="roleAuthority.administrators" (ngModelChange)="authorityChange()">管理员</nz-switch>
-    <button nz-button *buttonAuthority="'按钮1'">管理者能看到的按钮</button>
+    <button nz-button *buttonAuthority="'按钮1'">管理者能看到所有按钮</button>
   </div>
   <div nz-row style="margin:10px 0;"><span nz-col nzSpan="4" style="text-align: right;margin-right:12px;">角色A权限</span>
     <nz-switch [(ngModel)]="roleAuthority.certainRoleA" (ngModelChange)="authorityChange()">角色A</nz-switch>

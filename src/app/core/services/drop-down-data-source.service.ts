@@ -45,9 +45,9 @@ export class DropDownDataSourceService {
         label: chinaAreaData[areaCode][key]
       };
       if (children) {
-        if (chinaAreaData[areaCode][key] === '市辖区') {
+     /*    if (chinaAreaData[areaCode][key] === '市辖区') {
           return children;
-        }
+        } */
         obj['children'] = children;
       } else {
         obj['isLeaf'] = true;

@@ -6,61 +6,76 @@
       <!-- <button nz-button nzType="primary"></button>-->
     </ng-container>
     <ng-container ngProjectAs="searchShowArea">
-      <app-search-item searchLabel="姓名" [labelVisible]="!!searchParams.name">
-        <input nz-input placeholder="姓名" style="width:120px;" [(ngModel)]="searchParams.name"/>
+      <app-search-item searchLabel="订单号" [labelVisible]="!!searchParams.orderID">
+        <input nz-input placeholder="订单号" style="width:200px;" [(ngModel)]="searchParams.orderID" />
       </app-search-item>
-      <!--     <app-search-item searchLabel="年龄" [labelVisible]="!!searchParams.age">
-             <input nz-input type="number" placeholder="年龄" style="width:100px;" [(ngModel)]="searchParams.age"/>
-           </app-search-item>-->
-      <app-search-item searchLabel="地址" [labelVisible]="!!searchParams.address">
-        <input nz-input placeholder="地址" style="width:200px;" [(ngModel)]="searchParams.address"/>
+      <app-search-item searchLabel="订单类型" [labelVisible]="!!searchParams.orderType">
+        <nz-select [(ngModel)]="searchParams.orderType" style="width:200px;" nzPlaceHolder="订单类型" nzAllowClear>
+          <nz-option *ngFor="let option of dropDownService.orderType" [nzValue]="option.value" [nzLabel]="option.label">
+          </nz-option>
+        </nz-select>
       </app-search-item>
-      <app-search-item searchLabel="电话" [labelVisible]="!!searchParams.telephone">
-        <input nz-input placeholder="电话" style="width:160px;" [(ngModel)]="searchParams.telephone"/>
+      <app-search-item searchLabel="发货仓" [labelVisible]="!!searchParams.deliverStorage">
+        <nz-select [(ngModel)]="searchParams.deliverStorage" style="width:180px;" nzPlaceHolder="发货仓" nzAllowClear>
+          <nz-option *ngFor="let option of dropDownService.deliverStorage" [nzValue]="option.value"
+            [nzLabel]="option.label">
+          </nz-option>
+        </nz-select>
       </app-search-item>
-      <app-search-item searchLabel="入职时间" [labelVisible]="searchParams.entryDate&&searchParams.entryDate.length">
-        <nz-range-picker [(ngModel)]="searchParams.entryDate"></nz-range-picker>
+      <app-search-item searchLabel="收货区域" [labelVisible]="searchParams.area&&searchParams.area.length">
+        <nz-cascader [nzOptions]="dropDownService.chinaArea" [(ngModel)]="searchParams.area" nzShowSearch
+          [nzPlaceHolder]="'收货区域'"></nz-cascader>
       </app-search-item>
-      <app-search-item searchLabel="备注" [labelVisible]="!!searchParams.remark">
-        <input nz-input placeholder="备注" style="width:200px;" [(ngModel)]="searchParams.remark"/>
+      <app-search-item searchLabel="状态" [labelVisible]="searchParams.status!==null">
+        <nz-select [(ngModel)]="searchParams.status" style="width:180px;" nzPlaceHolder="状态" nzAllowClear>
+          <nz-option [nzValue]="true" [nzLabel]="'激活'"></nz-option>
+          <nz-option [nzValue]="false" [nzLabel]="'关闭'"></nz-option>
+        </nz-select>
       </app-search-item>
     </ng-container>
   </app-search-bar>
   <div>
     <nz-table #basicTable [nzData]="dataSet" nzShowSizeChanger>
       <thead>
-      <tr>
-        <th>订单号</th>
-        <th>订单类型</th>
-        <th>发货仓</th>
-        <th>收货地址</th>
-        <th>状态</th>
-        <th>创建人<br>创建时间</th>
-        <th>修改人<br>修改时间</th>
-        <th>备注</th>
-        <th>操作</th>
-      </tr>
+        <tr>
+          <th nzWidth="150px">订单号</th>
+          <th nzWidth="120px">订单类型</th>
+          <th nzWidth="120px">发货仓</th>
+          <th nzWidth="200px">收货地址</th>
+          <th nzWidth="50px">状态</th>
+          <th nzWidth="200px">创建人<br>创建时间</th>
+          <th nzWidth="200px">修改人<br>修改时间</th>
+          <th nzWidth="200px">备注</th>
+          <th nzWidth="150px">操作</th>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{data.orderID}}</td>
-        <td>{{data.orderType}}</td>
-        <td>{{data.deliverStorage}}</td>
-        <td>{{data.address}}</td>
-        <td>
-          <nz-switch [(ngModel)]="data.status" nzCheckedChildren="开" nzUnCheckedChildren="关"></nz-switch>
-        </td>
-        <td>{{data.entryDate}}</td>
-        <td>{{data.entryDate}}</td>
-        <td>{{data.remark}}</td>
-        <td>
-          <a>编辑</a>
-          <a style="color:red;margin:0 10px;">删除</a>
-        </td>
-      </tr>
+        <tr *ngFor="let data of basicTable.data;let i=index;">
+          <td>{{data.orderID}}</td>
+          <td>{{data.orderType}}</td>
+          <td>{{data.deliverStorage}}</td>
+          <td>
+            {{handleAddress(data.area,data.address)}}
+          </td>
+          <td>
+            <nz-switch [(ngModel)]="data.status" nzCheckedChildren="开" nzUnCheckedChildren="关"
+              (ngModelChange)="statusChange(i)"></nz-switch>
+          </td>
+          <td>
+            <div>{{data.createName}}</div>
+            <div>{{handleDate(data.createDate)}}</div>
+          </td>
+          <td>
+            <div>{{data.modifyName}}</div>
+            <div>{{handleDate(data.modifyDate)}}</div>
+          </td>
+          <td>{{data.remark}}</td>
+          <td>
+            <a (click)="openAddModal(data)">编辑</a>
+            <a style="color:red;margin:0 10px;" (click)="deleteItem(i)">删除</a>
+          </td>
+        </tr>
       </tbody>
     </nz-table>
   </div>
 </div>
-
-

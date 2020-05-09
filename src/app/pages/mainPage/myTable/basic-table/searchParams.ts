@@ -7,6 +7,7 @@ export class SearchParams {
   remark: string;
 
   constructor() {
+    this.reset();
   }
 
   getParams() {

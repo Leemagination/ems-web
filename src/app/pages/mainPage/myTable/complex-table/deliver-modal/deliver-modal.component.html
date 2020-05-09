@@ -16,7 +16,7 @@
       </ng-template>
     </td>
     <td>
-      <a (click)="data.editable=!data.editable">
+      <a (click)="editStatusChange(data)">
         <span *ngIf="!data.editable;else confirmTemplate">编辑</span>
         <ng-template #confirmTemplate>
           <span>确定</span>

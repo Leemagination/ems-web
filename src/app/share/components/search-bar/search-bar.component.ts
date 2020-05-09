@@ -8,11 +8,11 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnIni
 export class SearchBarComponent implements OnInit, AfterViewInit {
   @Output() searchEvent = new EventEmitter<boolean>();
   @Output() resetEvent = new EventEmitter<boolean>();
-  @ViewChild('searchBar', {static: true}) searchBar: ElementRef;
-  @ViewChild('buttonGroup', {static: true}) buttonGroup: ElementRef;
-  @ViewChild('searchArea', {static: true}) searchArea: ElementRef;
-  @ViewChild('basicButton', {static: true}) basicButton: ElementRef;
-  @ViewChild('stretchArea', {static: false}) stretchArea: ElementRef;
+  @ViewChild('searchBar', { static: true }) searchBar: ElementRef;
+  @ViewChild('buttonGroup', { static: true }) buttonGroup: ElementRef;
+  @ViewChild('searchArea', { static: true }) searchArea: ElementRef;
+  @ViewChild('basicButton', { static: true }) basicButton: ElementRef;
+  @ViewChild('stretchArea', { static: false }) stretchArea: ElementRef;
   stretchVisible = false;
 
   @HostListener('window:resize')
@@ -39,6 +39,9 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
     const searchAreaWidth = this.searchArea.nativeElement.clientWidth;
     const basicButtonWidth = this.basicButton.nativeElement.clientWidth;
     const searchBarWidth = this.searchBar.nativeElement.clientWidth;
+    if (searchBarWidth === 0) {
+      return;
+    }
     if (searchBarWidth < buttonGroupWidth + searchAreaWidth + basicButtonWidth + 70) {
       this.moveToStretchArea();
     } else {

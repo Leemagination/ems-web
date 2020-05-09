@@ -1,4 +1,10 @@
 <form nz-form [formGroup]="validateForm">
+  <nz-form-item *ngIf="editData">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="orderID">订单号</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input  id="orderID" formControlName="orderID" disabled/>
+    </nz-form-control>
+  </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="orderType" nzRequired>
       <span>订单类型</span>
@@ -33,12 +39,6 @@
       </ng-template>
     </nz-form-control>
   </nz-form-item>
-<!--  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>密码</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入密码!">
-      <input nz-input type="password" id="password" formControlName="password"/>
-    </nz-form-control>
-  </nz-form-item>-->
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="area" nzRequired>收货地区</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择地区!">
