@@ -2,30 +2,30 @@
   <div class="loginForm">
     <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
       <nz-form-item>
-        <nz-form-control nzErrorTip="请输入用户名!">
+        <nz-form-control [nzErrorTip]="'请输入用户名!'|translate">
           <nz-input-group nzPrefixIcon="user">
-            <input type="text" nz-input formControlName="userName" placeholder="Username"/>
+            <input type="text" nz-input formControlName="userName" [placeholder]="'用户名'|translate"/>
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your Password!">
+        <nz-form-control [nzErrorTip]="'请输入密码!'|translate">
           <nz-input-group nzPrefixIcon="lock">
-            <input type="password" nz-input formControlName="password" placeholder="Password"/>
+            <input type="password" nz-input formControlName="password" [placeholder]="'密码'|translate"/>
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-control [nzErrorTip]="errorTpl">
           <nz-input-group nzPrefixIcon="lock">
-            <input type="password" nz-input formControlName="passwordConfirm" placeholder="Password"/>
+            <input type="password" nz-input formControlName="passwordConfirm" [placeholder]="'确认密码'|translate"/>
           </nz-input-group>
           <ng-template #errorTpl let-control>
             <ng-container *ngIf="control.hasError('required')">
-              Please confirm your password!
+              {{'请输入密码!'|translate}}
             </ng-container>
             <ng-container *ngIf="control.hasError('confirm')">
-              Two passwords that you enter is inconsistent!
+              {{'两次输入的密码不一致!'|translate}}
             </ng-container>
           </ng-template>
         </nz-form-control>
@@ -33,9 +33,10 @@
       <nz-form-item>
         <nz-form-control>
           <button nz-button class="login-form-button" [nzType]="'primary'">{{'注册'|translate}}</button>
-          <span class="login-form-float">已有账号,<a  routerLink="/login">{{'去登录'|translate}}</a></span>
+          <span class="login-form-float">{{'已有账号'|translate}},<a routerLink="/login">{{'去登录'|translate}}</a></span>
         </nz-form-control>
       </nz-form-item>
     </form>
   </div>
+  <app-language-change-modal style="position: absolute;top:10px;right:20px;"></app-language-change-modal>
 </div>

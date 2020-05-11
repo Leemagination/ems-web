@@ -18,6 +18,7 @@ import { ButtonAuthorityDirective } from './directives/button-authority.directiv
     CommonModule,
     FormsModule,
     RouterModule,
+    TranslateModule,
     ReactiveFormsModule,
     NgZorroAntdModule
   ],

@@ -20,7 +20,7 @@
       <nz-tab *ngFor="let tab of navigationBarService.tabs;let i = index" [nzTitle]="titleTemplate">
         <ng-template #titleTemplate>
           <div>
-            {{ tab.tabTitle }}
+            {{ tab.tabTitle|translate }}
             <span class="tabCloseIcon"><i *ngIf="i===navigationBarService.tabIndex&&tab.closeable" nz-icon
                                           nzType="close-circle" (click)="navigationBarService.removeTab(i);"></i></span>
           </div>
@@ -39,7 +39,7 @@
     </li>
   </ul>
 </nz-dropdown-menu>
-<nz-drawer [nzClosable]="true" [nzVisible]="drawVisible" [nzPlacement]="'right'" nzTitle="个人待办项"
+<nz-drawer [nzClosable]="true" [nzVisible]="drawVisible" [nzPlacement]="'right'" [nzTitle]="'个人待办项'|translate"
            (nzOnClose)="drawVisible=false" [nzWidth]="'400px'">
   <div style="position: relative;width:100%;height:100%;overflow: hidden;min-height:300px;">
     <div style="position: absolute;width:100%;z-index: 10;right:0;">
@@ -47,9 +47,10 @@
                     (OkEvent)="todoListTemplate.getTodoList();addingTodo=false;"
                     (CancelEvent)="addingTodo=false"></app-add-todo>
     </div>
-    <div style="height:100%;width:100%;overflow: auto;text-align: center;" [ngStyle]="{opacity:addingTodo?0:1,transition:'opacity linear 0.3s'}">
+    <div style="height:100%;width:100%;overflow: auto;text-align: center;"
+         [ngStyle]="{opacity:addingTodo?0:1,transition:'opacity linear 0.3s'}">
       <button nz-button style="width:100%" (click)="addingTodo=true;">
-        <i nz-icon nzType="plus" nzTheme="outline"></i>增加待办项
+        <i nz-icon nzType="plus" nzTheme="outline"></i>{{'增加待办项'|translate}}
       </button>
       <app-todo-list #todoListTemplate></app-todo-list>
     </div>

@@ -2,20 +2,20 @@
   <div nz-col [nzSpan]="14" class="normalShaow" style="height:500px;position: relative;">
     <div style="height:10%;width:100%" class="splitLine">
       <nz-radio-group [(ngModel)]="dateType" nzButtonStyle="solid" (ngModelChange)="dateRangeChange($event)">
-        <label nz-radio-button nzValue="A">一周</label>
-        <label nz-radio-button nzValue="B">一月</label>
-        <label nz-radio-button nzValue="C">半年</label>
-        <label nz-radio-button nzValue="D">自定义</label>
+        <label nz-radio-button nzValue="A">{{'一周'|translate}}</label>
+        <label nz-radio-button nzValue="B">{{'一月'|translate}}</label>
+        <label nz-radio-button nzValue="C">{{'半年'|translate}}</label>
+        <label nz-radio-button nzValue="D">{{'自定义'|translate}}</label>
       </nz-radio-group>
       <nz-range-picker [nzDisabled]="dateType!=='D'" [(ngModel)]="dateRange"
                        (ngModelChange)="getChartData()"></nz-range-picker>
-      <span class="chartTitle">销售额统计</span>
+      <span class="chartTitle">{{'销售额统计'|translate}}</span>
     </div>
     <div #barChart style="height:90%;width:100%"></div>
   </div>
   <div nz-col [nzSpan]="8" [nzOffset]="1" class="normalShaow" style="height:500px;position:relative;">
     <div style="height:10%;width:100%" class="splitLine">
-      <span class="chartTitle">销售额分布</span>
+      <span class="chartTitle">{{'销售额分布'|translate}}</span>
     </div>
     <div #pieChart style="height:90%;width:100%"></div>
   </div>
@@ -23,7 +23,7 @@
 <div nz-row style="margin-top:40px;">
   <div nz-col [nzSpan]="23" class="normalShaow" style="height:300px;position: relative">
     <div style="height:16%;width:100%" class="splitLine">
-      <span class="chartTitle">流量图</span>
+      <span class="chartTitle">{{'流量图'|translate}}</span>
     </div>
     <div #lineChart style="height:84%;width:100%"></div>
   </div>

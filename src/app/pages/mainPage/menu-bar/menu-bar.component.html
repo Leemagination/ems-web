@@ -6,7 +6,7 @@
                <ng-template #menuIcon>
                 <i nz-icon [nzType]="menuItem.icon"></i>
                </ng-template>
-             <span>{{menuItem.menuTitle}}</span>
+             <span>{{menuItem.menuTitle|translate}}</span>
            </span>
      </li>
      <ng-template #singleMenuItem>
@@ -16,7 +16,7 @@
                <ng-template #menuIcon>
                 <i nz-icon [nzType]="menuItem.icon"></i>
                </ng-template>
-               <span>{{menuItem.menuTitle}}</span>
+               <span>{{menuItem.menuTitle|translate}}</span>
              </span>
          <ul>
            <app-menu-list *ngFor="let subMenu of menuItem.subMenu" [menuItem]="subMenu"></app-menu-list>

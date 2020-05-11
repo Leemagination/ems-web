@@ -6,23 +6,26 @@
           <button nz-button nzType="primary">333</button>
         </ng-container>-->
     <ng-container ngProjectAs="searchShowArea">
-      <app-search-item searchLabel="姓名" [labelVisible]="!!searchParams.name">
-        <input nz-input placeholder="姓名" style="width:120px;" [(ngModel)]="searchParams.name"/>
+      <app-search-item [searchLabel]="'姓名'|translate" [labelVisible]="!!searchParams.name">
+        <input nz-input [placeholder]="'姓名'|translate" style="width:120px;" [(ngModel)]="searchParams.name"/>
       </app-search-item>
-      <app-search-item searchLabel="年龄" [labelVisible]="!!searchParams.age">
-        <input nz-input type="number" placeholder="年龄" style="width:100px;" [(ngModel)]="searchParams.age"/>
+      <app-search-item [searchLabel]="'年龄'|translate" [labelVisible]="!!searchParams.age">
+        <input nz-input type="number" [placeholder]="'年龄'|translate" style="width:100px;"
+               [(ngModel)]="searchParams.age"/>
       </app-search-item>
-      <app-search-item searchLabel="地址" [labelVisible]="!!searchParams.address">
-        <input nz-input placeholder="地址" style="width:200px;" [(ngModel)]="searchParams.address"/>
+      <app-search-item [searchLabel]="'地址'|translate" [labelVisible]="!!searchParams.address">
+        <input nz-input [placeholder]="'地址'|translate" style="width:200px;" [(ngModel)]="searchParams.address"/>
       </app-search-item>
-      <app-search-item searchLabel="电话" [labelVisible]="!!searchParams.telephone">
-        <input nz-input placeholder="电话" style="width:160px;" [(ngModel)]="searchParams.telephone"/>
+      <app-search-item [searchLabel]="'电话'|translate" [labelVisible]="!!searchParams.telephone">
+        <input nz-input [placeholder]="'电话'|translate" style="width:160px;" [(ngModel)]="searchParams.telephone"/>
       </app-search-item>
-      <app-search-item searchLabel="入职时间" [labelVisible]="searchParams.entryDate&&searchParams.entryDate.length">
-        <nz-range-picker [(ngModel)]="searchParams.entryDate"></nz-range-picker>
+      <app-search-item [searchLabel]="'入职时间'|translate"
+                       [labelVisible]="searchParams.entryDate&&searchParams.entryDate.length">
+        <nz-range-picker [(ngModel)]="searchParams.entryDate"
+                         [nzPlaceHolder]="['开始日期'|translate,'结束日期'|translate]"></nz-range-picker>
       </app-search-item>
-      <app-search-item searchLabel="备注" [labelVisible]="!!searchParams.remark">
-        <input nz-input placeholder="备注" style="width:200px;" [(ngModel)]="searchParams.remark"/>
+      <app-search-item [searchLabel]="'备注'|translate" [labelVisible]="!!searchParams.remark">
+        <input nz-input [placeholder]="'备注'|translate" style="width:200px;" [(ngModel)]="searchParams.remark"/>
       </app-search-item>
     </ng-container>
   </app-search-bar>
@@ -30,12 +33,12 @@
     <nz-table #basicTable [nzData]="dataSet" nzShowSizeChanger>
       <thead>
       <tr>
-        <th>姓名</th>
-        <th>年龄</th>
-        <th>地址</th>
-        <th>电话</th>
-        <th>入职时间</th>
-        <th>备注</th>
+        <th>{{'姓名'|translate}}</th>
+        <th>{{'年龄'|translate}}</th>
+        <th>{{'地址'|translate}}</th>
+        <th>{{'电话'|translate}}</th>
+        <th>{{'入职时间'|translate}}</th>
+        <th>{{'备注'|translate}}</th>
       </tr>
       </thead>
       <tbody>

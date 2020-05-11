@@ -20,6 +20,7 @@ export class LanguageChangeModalComponent implements OnInit {
   ];
 
   constructor(private translateService: TranslateService) {
+
   }
 
   ngOnInit(): void {
@@ -32,6 +33,7 @@ export class LanguageChangeModalComponent implements OnInit {
   }
 
   changeLanguage(language: LanguageItem) {
+    localStorage.setItem('language', language.value);
     this.currentLanguage = language.title;
     this.translateService.use(language.value);
   }

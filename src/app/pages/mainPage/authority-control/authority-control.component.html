@@ -2,21 +2,21 @@
   <h2>角色权限展示:用户可分配多个角色.游客权限最低,管理者最高</h2>
   <h3>不同角色拥有不同的菜单权限</h3>
   <div nz-row>
-    <span nz-col nzSpan="4" style="text-align: right;margin-right:12px;">管理员权限</span>
-    <nz-switch [(ngModel)]="roleAuthority.administrators" (ngModelChange)="authorityChange()">管理员</nz-switch>
-    <button nz-button *buttonAuthority="'按钮1'">管理者能看到所有按钮</button>
+    <span nz-col nzSpan="4" style="text-align: right;margin-right:12px;">{{'管理员权限'|translate}}</span>
+    <nz-switch [(ngModel)]="roleAuthority.administrators" (ngModelChange)="authorityChange()"></nz-switch>
+    <button nz-button *buttonAuthority="'按钮1'">{{'管理者能看到所有按钮'|translate}}</button>
   </div>
-  <div nz-row style="margin:10px 0;"><span nz-col nzSpan="4" style="text-align: right;margin-right:12px;">角色A权限</span>
-    <nz-switch [(ngModel)]="roleAuthority.certainRoleA" (ngModelChange)="authorityChange()">角色A</nz-switch>
-    <button nz-button *buttonAuthority="'按钮2'">角色A能看到的按钮</button>
+  <div nz-row style="margin:10px 0;"><span nz-col nzSpan="4" style="text-align: right;margin-right:12px;">{{'角色A权限'|translate}}</span>
+    <nz-switch [(ngModel)]="roleAuthority.certainRoleA" (ngModelChange)="authorityChange()"></nz-switch>
+    <button nz-button *buttonAuthority="'按钮2'">{{'角色A能看到的按钮'|translate}}</button>
   </div>
-  <div nz-row style="margin:10px 0;"><span nz-col nzSpan="4" style="text-align: right;margin-right:12px;">角色B权限</span>
-    <nz-switch [(ngModel)]="roleAuthority.certainRoleB" (ngModelChange)="authorityChange()" >角色B</nz-switch>
-    <button nz-button *buttonAuthority="'按钮3'">角色B能看到的按钮</button>
+  <div nz-row style="margin:10px 0;"><span nz-col nzSpan="4" style="text-align: right;margin-right:12px;">{{'角色B权限'|translate}}</span>
+    <nz-switch [(ngModel)]="roleAuthority.certainRoleB" (ngModelChange)="authorityChange()" ></nz-switch>
+    <button nz-button *buttonAuthority="'按钮3'">{{'角色B能看到的按钮'|translate}}</button>
   </div>
-  <div nz-row><span nz-col nzSpan="4" style="text-align: right;margin-right:12px;">游客权限</span>
-    <nz-switch [(ngModel)]="roleAuthority.guest" nzDisabled>游客</nz-switch>
-    <button nz-button *buttonAuthority="'按钮4'">所有角色都能看到的按钮</button>
+  <div nz-row><span nz-col nzSpan="4" style="text-align: right;margin-right:12px;">{{'游客权限'|translate}}</span>
+    <nz-switch [(ngModel)]="roleAuthority.guest" nzDisabled></nz-switch>
+    <button nz-button *buttonAuthority="'按钮4'">{{'所有角色都能看到的按钮'|translate}}</button>
   </div>
 
 </div>

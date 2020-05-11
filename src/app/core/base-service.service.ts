@@ -79,9 +79,7 @@ export class BaseService {
   logout() {
     this.cookieService.deleteCookie('Authorization');
     RouteTabReuseStrategy.clearAllReuseRoute();
-
     this.router.navigateByUrl('/login').then(() => {
-      //this.navigationBarService.initTab();
       window.location.reload();
     });
   }

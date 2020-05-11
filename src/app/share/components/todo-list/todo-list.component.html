@@ -6,7 +6,7 @@
         <span *ngIf="!todo.edit;else todoContentTemplate">{{todo.content}}</span>
         <ng-template #todoContentTemplate>
         <textarea style="width:100%;max-height: 70px;" nz-input [(ngModel)]="todo.content"
-                  placeholder="待办内容"></textarea>
+                  [placeholder]="'待办内容'|translate"></textarea>
         </ng-template>
       </div>
       <div class="todoTimeContainer">
@@ -29,7 +29,7 @@
           <nz-date-picker style="width:60%;"
                           nzShowTime
                           nzFormat="yyyy-MM-dd HH:mm:ss"
-                          nzPlaceHolder="待办时间"
+                          [nzPlaceHolder]="'待办时间'|translate"
                           [nzAllowClear]="false"
                           [(ngModel)]="todo.date"
           ></nz-date-picker>

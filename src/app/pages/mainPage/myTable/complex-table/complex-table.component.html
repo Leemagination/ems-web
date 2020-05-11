@@ -1,35 +1,35 @@
 <div class="normalShaow" style="padding:20px;">
   <app-search-bar (searchEvent)="search()" (resetEvent)="reset()">
     <ng-container ngProjectAs="operationButton">
-      <button nz-button nzType="primary" (click)="openAddModal()">新增</button>
-      <button nz-button nzType="primary" style="margin:0 10px;" (click)="openDeliverModal()">新增发货仓</button>
+      <button nz-button nzType="primary" (click)="openAddModal()">{{'新增'|translate}}</button>
+      <button nz-button nzType="primary" style="margin:0 10px;" (click)="openDeliverModal()">{{'新增发货仓'|translate}}</button>
       <!-- <button nz-button nzType="primary"></button>-->
     </ng-container>
     <ng-container ngProjectAs="searchShowArea">
-      <app-search-item searchLabel="订单号" [labelVisible]="!!searchParams.orderID">
-        <input nz-input placeholder="订单号" style="width:200px;" [(ngModel)]="searchParams.orderID" />
+      <app-search-item [searchLabel]="'订单号'|translate" [labelVisible]="!!searchParams.orderID">
+        <input nz-input [placeholder]="'订单号'|translate" style="width:200px;" [(ngModel)]="searchParams.orderID" />
       </app-search-item>
-      <app-search-item searchLabel="订单类型" [labelVisible]="!!searchParams.orderType">
-        <nz-select [(ngModel)]="searchParams.orderType" style="width:200px;" nzPlaceHolder="订单类型" nzAllowClear>
+      <app-search-item [searchLabel]="'订单类型'|translate" [labelVisible]="!!searchParams.orderType">
+        <nz-select [(ngModel)]="searchParams.orderType" style="width:200px;" [nzPlaceHolder]="'订单类型'|translate" nzAllowClear>
           <nz-option *ngFor="let option of dropDownService.orderType" [nzValue]="option.value" [nzLabel]="option.label">
           </nz-option>
         </nz-select>
       </app-search-item>
-      <app-search-item searchLabel="发货仓" [labelVisible]="!!searchParams.deliverStorage">
-        <nz-select [(ngModel)]="searchParams.deliverStorage" style="width:180px;" nzPlaceHolder="发货仓" nzAllowClear>
+      <app-search-item [searchLabel]="'发货仓'|translate" [labelVisible]="!!searchParams.deliverStorage">
+        <nz-select [(ngModel)]="searchParams.deliverStorage" style="width:180px;" [nzPlaceHolder]="'发货仓'|translate" nzAllowClear>
           <nz-option *ngFor="let option of dropDownService.deliverStorage" [nzValue]="option.value"
             [nzLabel]="option.label">
           </nz-option>
         </nz-select>
       </app-search-item>
-      <app-search-item searchLabel="收货区域" [labelVisible]="searchParams.area&&searchParams.area.length">
+      <app-search-item [searchLabel]="'收货区域'|translate" [labelVisible]="searchParams.area&&searchParams.area.length">
         <nz-cascader [nzOptions]="dropDownService.chinaArea" [(ngModel)]="searchParams.area" nzShowSearch
-          [nzPlaceHolder]="'收货区域'"></nz-cascader>
+          [nzPlaceHolder]="'收货区域'|translate"></nz-cascader>
       </app-search-item>
-      <app-search-item searchLabel="状态" [labelVisible]="searchParams.status!==null">
-        <nz-select [(ngModel)]="searchParams.status" style="width:180px;" nzPlaceHolder="状态" nzAllowClear>
-          <nz-option [nzValue]="true" [nzLabel]="'激活'"></nz-option>
-          <nz-option [nzValue]="false" [nzLabel]="'关闭'"></nz-option>
+      <app-search-item [searchLabel]="'状态'|translate" [labelVisible]="searchParams.status!==null">
+        <nz-select [(ngModel)]="searchParams.status" style="width:180px;" [nzPlaceHolder]="'状态'|translate" nzAllowClear>
+          <nz-option [nzValue]="true" [nzLabel]="'激活'|translate"></nz-option>
+          <nz-option [nzValue]="false" [nzLabel]="'关闭'|translate"></nz-option>
         </nz-select>
       </app-search-item>
     </ng-container>
@@ -38,15 +38,15 @@
     <nz-table #basicTable [nzData]="dataSet" nzShowSizeChanger>
       <thead>
         <tr>
-          <th nzWidth="150px">订单号</th>
-          <th nzWidth="120px">订单类型</th>
-          <th nzWidth="120px">发货仓</th>
-          <th nzWidth="200px">收货地址</th>
-          <th nzWidth="50px">状态</th>
-          <th nzWidth="200px">创建人<br>创建时间</th>
-          <th nzWidth="200px">修改人<br>修改时间</th>
-          <th nzWidth="200px">备注</th>
-          <th nzWidth="150px">操作</th>
+          <th nzWidth="150px">{{'订单号'|translate}}</th>
+          <th nzWidth="120px">{{'订单类型'|translate}}</th>
+          <th nzWidth="120px">{{'发货仓'|translate}}</th>
+          <th nzWidth="200px">{{'收货地址'|translate}}</th>
+          <th nzWidth="50px">{{'状态'|translate}}</th>
+          <th nzWidth="200px">{{'创建人'|translate}}<br>{{'创建时间'|translate}}</th>
+          <th nzWidth="200px">{{'修改人'|translate}}<br>{{'修改时间'|translate}}</th>
+          <th nzWidth="200px">{{'备注'|translate}}</th>
+          <th nzWidth="150px">{{'操作'|translate}}</th>
         </tr>
       </thead>
       <tbody>
@@ -58,7 +58,8 @@
             {{handleAddress(data.area,data.address)}}
           </td>
           <td>
-            <nz-switch [(ngModel)]="data.status" nzCheckedChildren="开" nzUnCheckedChildren="关"
+            <nz-switch [(ngModel)]="data.status" [nzCheckedChildren]="'开'|translate"
+                       [nzUnCheckedChildren]="'关'|translate"
               (ngModelChange)="statusChange(i)"></nz-switch>
           </td>
           <td>
@@ -71,8 +72,8 @@
           </td>
           <td>{{data.remark}}</td>
           <td>
-            <a (click)="openAddModal(data)">编辑</a>
-            <a style="color:red;margin:0 10px;" (click)="deleteItem(i)">删除</a>
+            <a (click)="openAddModal(data)">{{'编辑'|translate}}</a>
+            <a style="color:red;margin:0 10px;" (click)="deleteItem(i)">{{'删除'|translate}}</a>
           </td>
         </tr>
       </tbody>

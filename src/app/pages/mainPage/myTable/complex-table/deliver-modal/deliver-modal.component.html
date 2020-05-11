@@ -1,9 +1,9 @@
 <nz-table #basicTable [nzData]="dataSet" [nzShowPagination]="false" [nzFrontPagination]="false">
   <thead>
   <tr>
-    <th nzWidth="20%">序号</th>
-    <th nzWidth="50%">发货仓</th>
-    <th nzWidth="30%">操作</th>
+    <th nzWidth="20%">{{'序号'|translate}}</th>
+    <th nzWidth="50%">{{'发货仓'|translate}}</th>
+    <th nzWidth="30%">{{'操作'|translate}}</th>
   </tr>
   </thead>
   <tbody>
@@ -17,12 +17,12 @@
     </td>
     <td>
       <a (click)="editStatusChange(data)">
-        <span *ngIf="!data.editable;else confirmTemplate">编辑</span>
+        <span *ngIf="!data.editable;else confirmTemplate">{{'编辑'|translate}}</span>
         <ng-template #confirmTemplate>
-          <span>确定</span>
+          <span>{{'确定'|translate}}</span>
         </ng-template>
       </a>
-      <a style="color:red;margin:0 10px;" (click)="deleteDeliver(i)" *ngIf="!data.editable">删除</a>
+      <a style="color:red;margin:0 10px;" (click)="deleteDeliver(i)" *ngIf="!data.editable">{{'删除'|translate}}</a>
     </td>
   </tr>
   </tbody>

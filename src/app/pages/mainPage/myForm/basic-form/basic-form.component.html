@@ -1,70 +1,72 @@
 <div class="normalShaow" style="padding:20px 0;">
   <div class="formButtonContainer">
-    <span style="font-size: 20px;font-weight: bold;color: #8d8d8dd6;">个人信息</span>
+    <span style="font-size: 20px;font-weight: bold;color: #8d8d8dd6;">{{'个人信息'|translate}}</span>
     <div style="float:right">
-      <button nz-button nzType="primary" *buttonAuthority="'保存'" style="margin:0 10px;" (click)="clickSave()" [nzLoading]="saveLoading">保存</button>
-      <button nz-button (click)="resetForm()">重置</button>
+      <button nz-button nzType="primary" *buttonAuthority="'保存'" style="margin:0 10px;" (click)="clickSave()"
+              [nzLoading]="saveLoading">{{'保存'|translate}}</button>
+      <button nz-button (click)="resetForm()">{{'重置'|translate}}</button>
     </div>
   </div>
   <form nz-form [formGroup]="validateForm">
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="userName" nzRequired>
-        <span>用户名</span>
+        <span>{{'用户名'|translate}}</span>
       </nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
-        <input nz-input id="userName" formControlName="userName" placeholder="请输入6-16位字符"/>
+        <input nz-input id="userName" formControlName="userName" [placeholder]="'请输入6-16位字符!'|translate"/>
         <ng-template #errorTpl let-control>
           <ng-container *ngIf="control.hasError('required')">
-            请输入用户名!
+            {{'请输入用户名!'|translate}}
           </ng-container>
           <ng-container *ngIf="control.hasError('maxlength')||control.hasError('minlength')">
-            请输入6-16位字符!
+            {{'请输入6-16位字符!'|translate}}
           </ng-container>
         </ng-template>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>密码</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入密码!">
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>{{'密码'|translate}}</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="'请输入密码!'|translate">
         <input nz-input type="password" id="password" formControlName="password"
                (ngModelChange)="updateConfirmValidator()"/>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>确认密码</nz-form-label>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>{{'确认密码'|translate}}</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl2">
         <input nz-input type="password" formControlName="checkPassword" id="checkPassword"/>
         <ng-template #errorTpl2 let-control>
           <ng-container *ngIf="control.hasError('required')">
-            请输入密码!
+            {{'请输入密码!'|translate}}
           </ng-container>
           <ng-container *ngIf="control.hasError('confirm')">
-            两次输入密码不一致!
+            {{'两次输入的密码不一致!'|translate}}
           </ng-container>
         </ng-template>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="area" nzRequired>中国地区</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择地区!">
-        <nz-cascader [nzOptions]="dropDownService.chinaArea" formControlName="area" nzShowSearch [nzPlaceHolder]="' '"></nz-cascader>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="area" nzRequired>{{'中国地区'|translate}}</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="'请选择地区!'|translate">
+        <nz-cascader [nzOptions]="dropDownService.chinaArea" formControlName="area" nzShowSearch
+                     [nzPlaceHolder]="' '"></nz-cascader>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" nzRequired>
-        <span>详细地址</span>
+        <span>{{'详细地址'|translate}}</span>
       </nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请填写地址">
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="'请填写地址'|translate">
         <input nz-input id="address" formControlName="address"/>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>手机</nz-form-label>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>{{'电话'|translate}}</nz-form-label>
       <nz-form-control
         [nzSm]="14"
         [nzXs]="24"
         [nzValidateStatus]="validateForm.controls['phoneNumber']"
-        nzErrorTip="请输入电话号码!"
+        [nzErrorTip]="'请输入电话号码!'|translate"
       >
         <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
           <ng-template #addOnBeforeTemplate>
@@ -78,21 +80,21 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24"  nzFor="email">邮箱</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="非法的邮箱地址!">
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="email">{{'邮箱'|translate}}</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="'非法的邮箱地址!'|translate">
         <input nz-input formControlName="email" id="email"/>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="website" >网站</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入网站地址!">
-        <input nz-input id="website" formControlName="website" />
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="website">{{'网站'|translate}}</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="'请输入网站地址!'|translate">
+        <input nz-input id="website" formControlName="website"/>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="remark" >备注</nz-form-label>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="remark">{{'备注'|translate}}</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24">
-        <textarea  nz-input style="min-height: 90px;" id="remark" formControlName="remark" ></textarea >
+        <textarea nz-input style="min-height: 90px;" id="remark" formControlName="remark"></textarea>
       </nz-form-control>
     </nz-form-item>
   </form>

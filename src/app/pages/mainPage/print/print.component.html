@@ -1,10 +1,10 @@
 <div style="text-align: center;height: 100%;">
   <div>
     <button nz-button nzType="primary" style="margin-right: 100px;" (click)="prePDF()"
-            *ngIf="currentPdfIndex!==1">上一张
+            *ngIf="currentPdfIndex!==1">{{'上一张'|translate}}
     </button>
     <button nz-button nzType="primary" (click)="nextPDF()"
-            *ngIf="currentPdfIndex!==3">下一张
+            *ngIf="currentPdfIndex!==3">{{'下一张'|translate}}
     </button>
   </div>
 <iframe [src]="iframeSrc" frameborder="0" style="width:70%;height:90%;">

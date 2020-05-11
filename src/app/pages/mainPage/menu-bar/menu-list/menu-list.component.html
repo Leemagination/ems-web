@@ -3,14 +3,14 @@
       [routerLink]="menuItem.routerLink">
           <span title>
                 <i *ngIf="menuItem.icon;" nz-icon [nzType]="menuItem.icon"></i>
-            <span>{{menuItem.menuTitle}}</span>
+            <span>{{menuItem.menuTitle|translate}}</span>
           </span>
   </li>
   <ng-template #singleMenuItem>
     <li nz-submenu>
             <span title>
           <i *ngIf="menuItem.icon;" nz-icon [nzType]="menuItem.icon"></i>
-              <span>{{menuItem.menuTitle}}</span>
+              <span>{{menuItem.menuTitle|translate}}</span>
             </span>
       <ul>
         <app-menu-list *ngFor="let subMenu of menuItem.subMenu" [menuItem]="subMenu"></app-menu-list>

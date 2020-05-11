@@ -1,49 +1,49 @@
 <div class="normalShaow" style="padding:20px 0;">
   <div style="width:80%;margin:10px auto 50px;">
     <nz-steps [nzCurrent]="stepIndex" style="width:80%;">
-      <nz-step nzTitle="填写转账信息"></nz-step>
-      <nz-step nzTitle="确认转账信息"></nz-step>
-      <nz-step nzTitle="结果"></nz-step>
+      <nz-step [nzTitle]="'填写转账信息'|translate"></nz-step>
+      <nz-step [nzTitle]="'确认转账信息'|translate"></nz-step>
+      <nz-step [nzTitle]="'结果'|translate"></nz-step>
     </nz-steps>
   </div>
   <ng-container *ngIf="stepIndex===0">
     <form nz-form [formGroup]="validateForm1">
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="payAccount" nzRequired>
-          <span>付款账号</span>
+          <span>{{'付款账号'|translate}}</span>
         </nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
-          <input nz-input id="payAccount" formControlName="payAccount" placeholder="请输入6-26位字符"/>
+          <input nz-input id="payAccount" formControlName="payAccount" [placeholder]="'请输入6-26位字符'|translate"/>
           <ng-template #errorTpl let-control>
             <ng-container *ngIf="control.hasError('required')">
-              请输入付款账号!
+              {{'请输入付款账号!'|translate}}
             </ng-container>
             <ng-container *ngIf="control.hasError('maxlength')||control.hasError('minlength')">
-              请输入6-26位字符!
+              {{'请输入6-26位字符'|translate}}
             </ng-container>
           </ng-template>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="receiptAccount" nzRequired>
-          <span>收款账号</span>
+          <span>{{'收款账号'|translate}}</span>
         </nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24" [nzValidateStatus]="validateForm1.controls['receiptAccount']"
                          [nzErrorTip]="errorTpl2">
           <nz-input-group nzCompact>
-            <nz-select formControlName="receiptType" style="width:90px;">
-              <nz-option [nzLabel]="'微信'" [nzValue]="'微信'"></nz-option>
-              <nz-option [nzLabel]="'支付宝'" [nzValue]="'支付宝'"></nz-option>
-              <nz-option [nzLabel]="'银行卡'" [nzValue]="'银行卡'"></nz-option>
+            <nz-select formControlName="receiptType" style="width:120px;">
+              <nz-option [nzLabel]="'微信'|translate" [nzValue]="'微信'"></nz-option>
+              <nz-option [nzLabel]="'支付宝'|translate" [nzValue]="'支付宝'"></nz-option>
+              <nz-option [nzLabel]="'银行卡'|translate" [nzValue]="'银行卡'"></nz-option>
             </nz-select>
-            <input nz-input placeholder="请输入收款账号" style="width: 200px;" formControlName="receiptAccount"/>
+            <input nz-input [placeholder]="'请输入收款账号'|translate" style="width: 200px;" formControlName="receiptAccount"/>
             <ng-template #errorTpl2 let-control>
               <ng-container *ngIf="validateForm1.controls['receiptAccount'].hasError('required')">
-                请输入收款账号!
+                {{'请输入收款账号'|translate}}
               </ng-container>
               <ng-container
                 *ngIf="validateForm1.controls['receiptAccount'].hasError('maxlength')||validateForm1.controls['receiptAccount'].hasError('minlength')">
-                请输入6-26位字符!
+                {{'请输入6-26位字符!'|translate}}
               </ng-container>
             </ng-template>
           </nz-input-group>
@@ -51,38 +51,38 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="receiptName" nzRequired>
-          <span>收款姓名</span>
+          <span>{{'收款姓名'|translate}}</span>
         </nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl3">
-          <input nz-input id="receiptName" formControlName="receiptName" placeholder="请输入6-10位字符"/>
+          <input nz-input id="receiptName" formControlName="receiptName" [placeholder]="'请输入6-10位字符'|translate"/>
           <ng-template #errorTpl3 let-control>
             <ng-container *ngIf="control.hasError('required')">
-              请输入收款账号!
+              {{'请输入收款姓名'|translate}}
             </ng-container>
             <ng-container *ngIf="control.hasError('maxlength')||control.hasError('minlength')">
-              请输入6-10位字符!
+              {{'请输入6-10位字符'|translate}}
             </ng-container>
           </ng-template>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="money" nzRequired>
-          <span>收款金额</span>
+          <span>{{'收款金额'|translate}}</span>
         </nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl4">
-          <input nz-input id="money" formControlName="money" placeholder="请输入金额"/>
+          <input nz-input id="money" formControlName="money" [placeholder]="'请输入金额'|translate"/>
           <ng-template #errorTpl4 let-control>
             <ng-container *ngIf="control.hasError('required')">
-              请输入收款金额!
+              {{'请输入收款金额!'|translate}}
             </ng-container>
             <ng-container *ngIf="control.hasError('pattern')">
-              请输入正确数字金额!
+              {{'请输入正确数字金额!'|translate}}
             </ng-container>
           </ng-template>
         </nz-form-control>
       </nz-form-item>
       <div style="text-align: center;">
-        <button nz-button nzType="primary" (click)="nextStep(1)">下一步</button>
+        <button nz-button nzType="primary" (click)="nextStep(1)">{{'下一步'|translate}}</button>
       </div>
       <div style="border-top: 1px solid #dbdbdb;margin:50px 80px;">
         <div style="margin:10px 30px;">
@@ -98,7 +98,7 @@
     <div style="width:60%;margin:0 auto;">
       <div nz-row class="displayStyle">
         <div nz-col [nzSpan]="8" [nzOffset]="3" class="formTitle">
-          <span>付款账号</span>
+          <span>{{'付款账号'|translate}}</span>
         </div>
         <div nz-col [nzSpan]="10">
           <span class="formMessage">{{validateForm1.controls['payAccount'].value}}</span>
@@ -106,15 +106,15 @@
       </div>
       <div nz-row class="displayStyle">
         <div nz-col [nzSpan]="8" [nzOffset]="3" class="formTitle">
-          <span>转账类型</span>
+          <span>{{'转账类型'|translate}}</span>
         </div>
         <div nz-col [nzSpan]="10">
-          <span class="formMessage">{{validateForm1.controls['receiptType'].value}}</span>
+          <span class="formMessage">{{validateForm1.controls['receiptType'].value|translate}}</span>
         </div>
       </div>
       <div nz-row class="displayStyle">
         <div nz-col [nzSpan]="8" [nzOffset]="3" class="formTitle">
-          <span>收款账号</span>
+          <span>{{'收款账号'|translate}}</span>
         </div>
         <div nz-col [nzSpan]="10">
           <span class="formMessage">{{validateForm1.controls['receiptAccount'].value}}</span>
@@ -122,7 +122,7 @@
       </div>
       <div nz-row class="displayStyle">
         <div nz-col [nzSpan]="8" [nzOffset]="3" class="formTitle">
-          <span>收款姓名</span>
+          <span>{{'收款姓名'|translate}}</span>
         </div>
         <div nz-col [nzSpan]="10">
           <span class="formMessage">{{validateForm1.controls['receiptName'].value}}</span>
@@ -130,7 +130,7 @@
       </div>
       <div nz-row class="displayStyle">
         <div nz-col [nzSpan]="8" [nzOffset]="3" class="formTitle">
-          <span>收款金额</span>
+          <span>{{'收款金额'|translate}}</span>
         </div>
         <div nz-col [nzSpan]="10">
           <span style="color:#ff0000" class="formMessage">{{validateForm1.controls['money'].value}}</span>
@@ -139,14 +139,14 @@
       <form nz-form [formGroup]="validateForm2">
         <nz-form-item>
           <nz-form-label [nzSm]="8" [nzOffset]="3" [nzXs]="24" nzFor="payPassword" nzRequired>
-            <span>付款密码</span>
+            <span>{{'付款密码'|translate}}</span>
           </nz-form-label>
           <nz-form-control [nzSm]="10" [nzXs]="24" [nzErrorTip]="errorTpl5">
             <input style="width:160px;" nz-input type="password" id="payPassword" formControlName="payPassword"
                    placeholder=""/>
             <ng-template #errorTpl5 let-control>
               <ng-container *ngIf="control.hasError('required')">
-                请输入付款密码!
+                {{'请输入付款密码!'|translate}}
               </ng-container>
             </ng-template>
           </nz-form-control>
@@ -154,12 +154,12 @@
       </form>
     </div>
     <div style="text-align: center;">
-      <button nz-button (click)="previousStep()" style="margin-right: 20px;">上一步</button>
-      <button nz-button nzType="primary" (click)="nextStep(2)" [nzLoading]="loading">提交</button>
+      <button nz-button (click)="previousStep()" style="margin-right: 20px;">{{'上一步'|translate}}</button>
+      <button nz-button nzType="primary" (click)="nextStep(2)" [nzLoading]="loading">{{'提交'|translate}}</button>
     </div>
     <div style="border-top: 1px solid #dbdbdb;margin:50px 80px;">
       <div style="margin:10px 30px;">
-        <h2><i nz-icon nzType="warning" nzTheme="outline" style="color:#ff0000"></i>提示</h2>
+        <h2><i nz-icon nzType="warning" nzTheme="outline" style="color:#ff0000"></i>{{'提示'|translate}}</h2>
         <span style="color:#9c9c9c">确认转账后，资金将直接打入对方账户，无法退回。</span>
       </div>
     </div>
@@ -167,10 +167,10 @@
   <ng-container *ngIf="stepIndex===2">
     <nz-result
       nzStatus="success"
-      nzTitle="已成功转账!"
+      [nzTitle]="'已成功转账!'|translate"
     >
       <div nz-result-extra>
-        <button nz-button nzType="primary" (click)="transferAgain()">重新转账</button>
+        <button nz-button nzType="primary" (click)="transferAgain()">{{'重新转账'|translate}}</button>
       </div>
     </nz-result>
   </ng-container>
