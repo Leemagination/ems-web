@@ -25,7 +25,7 @@ export class NavigationBarComponent implements OnInit {
   }
 
   routerLinkChange(index) {
-    this.router.navigateByUrl(this.navigationBarService.tabs[index].routerLink);
+      this.router.navigateByUrl(this.navigationBarService.tabs[index].routerLink);
   }
 
   logout() {

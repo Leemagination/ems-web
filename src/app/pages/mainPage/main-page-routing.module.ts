@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainPageComponent } from './main-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { LoggedGuard } from '../../core/routerGuard/logged-guard.service';
 
 
 const routes: Routes = [{
   path: '',
   component: MainPageComponent,
+  canActivate: [LoggedGuard],
+  canActivateChild: [LoggedGuard],
   children: [
     {path: 'home', component: HomePageComponent},
     {path: 'chart1', loadChildren: () => import('./chart/chart1/chart1.module').then(m => m.Chart1Module)},

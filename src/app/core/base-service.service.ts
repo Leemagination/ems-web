@@ -27,7 +27,7 @@ export class BaseService {
 
   constructor(private http: HttpClient, private cookieService: CookieService,
               private router: Router,
-              private navigationBarService: NavigationBarService) {
+             ) {
   }
 
   public get(url: string, params?: { [param: string]: any }, options?: RequestOptions): Observable<any> {
@@ -79,8 +79,10 @@ export class BaseService {
   logout() {
     this.cookieService.deleteCookie('Authorization');
     RouteTabReuseStrategy.clearAllReuseRoute();
+
     this.router.navigateByUrl('/login').then(() => {
-      this.navigationBarService.initTab();
+      //this.navigationBarService.initTab();
+      window.location.reload();
     });
   }
 }

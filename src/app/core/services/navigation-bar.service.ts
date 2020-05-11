@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MenuBarService } from './menu-bar.service';
 import { Router } from '@angular/router';
 import { RouteTabReuseStrategy } from '../RouteReuseStrategy';
+import { Subject } from 'rxjs';
 
 interface NavigationTab {
   tabTitle: string;
@@ -16,6 +17,7 @@ interface NavigationTab {
 export class NavigationBarService {
   public tabs: NavigationTab[];
   public tabIndex = 0;
+  public tabChangeEvent$ = new Subject<{ url: string, params?: object }>();
 
   constructor(private menuService: MenuBarService, private router: Router) {
     this.initTab();
@@ -23,6 +25,13 @@ export class NavigationBarService {
 
   initTab() {
     this.tabs = [{tabTitle: '首页', routerLink: '/home', closeable: false}];
+    this.handleTabChangeEvent();
+  }
+
+  handleTabChangeEvent() {
+    this.tabChangeEvent$.subscribe(data => {
+      this.router.navigate([data.url], {queryParams: data.params});
+    });
   }
 
   addTab(tab: NavigationTab, redirectNewTab = true): void {

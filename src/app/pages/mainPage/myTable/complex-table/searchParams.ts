@@ -4,8 +4,17 @@ export class SearchParams {
   deliverStorage: string;
   area: string[];
   status: boolean;
+
   constructor() {
-        this.reset();
+    this.reset();
+  }
+
+  setParams(target) {
+    this.orderID = target.orderID;
+    this.orderType = target.orderType;
+    this.deliverStorage = target.deliverStorage;
+    this.area = target.area;
+    this.status = target.status === 'undefined' ? null : target.status === 'true';
   }
 
   getParams() {

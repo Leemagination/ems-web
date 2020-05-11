@@ -5,7 +5,10 @@ import { DeliverModalComponent } from './deliver-modal/deliver-modal.component';
 import { DropDownDataSourceService } from 'src/app/core/services/drop-down-data-source.service';
 import { SearchParams } from './searchParams';
 import { formatDate } from 'src/app/share/function/dateUtil';
-const chinaAreaData = require('src/assets/json/chinaAreaData.json')
+import { NavigationEnd, Router } from '@angular/router';
+
+const chinaAreaData = require('src/assets/json/chinaAreaData.json');
+
 @Component({
   selector: 'app-complex-table',
   templateUrl: './complex-table.component.html',
@@ -15,12 +18,39 @@ export class ComplexTableComponent implements OnInit {
   searchParams = new SearchParams();
   dataSet = [];
 
-  constructor(private nzModalService: NzModalService, private nzMessage: NzMessageService,
-    public dropDownService: DropDownDataSourceService) {
+  constructor(private nzModalService: NzModalService,
+              private nzMessage: NzMessageService,
+              private router: Router,
+              public dropDownService: DropDownDataSourceService) {
     this.getMockData();
+    this.handleTabChange();
   }
 
   ngOnInit(): void {
+
+  }
+
+  handleTabChange() {
+    this.router.events.subscribe(data => {
+      if (data instanceof NavigationEnd) {
+        if (data.url.indexOf('complexTable') !== -1) {
+          const index = data.url.indexOf('?');
+          if (index !== -1) {
+            const queryParams = data.url.slice(index + 1);
+            const paramsArr = queryParams.split('&');
+            const result = {};
+            paramsArr.forEach(item => {
+              const arr = item.split('=');
+              const prop = arr[0];
+              const value = arr[1];
+              result[prop] = decodeURI(value);
+            });
+            this.searchParams.setParams(result);
+            this.search();
+          }
+        }
+      }
+    });
   }
 
   getMockData() {
@@ -35,14 +65,14 @@ export class ComplexTableComponent implements OnInit {
     let arr = JSON.parse(localStorage.getItem('tableMockData'));
     let flag = true;
     for (const prop in params) {
-      if (params[prop] !== null) {
+      if (params[prop] !== null && params[prop] !== undefined) {
         flag = false;
         arr = arr.filter(item => {
           if (prop === 'area') {
-            return JSON.stringify(item[prop]) === JSON.stringify(params[prop])
+            return JSON.stringify(item[prop]) === JSON.stringify(params[prop]);
           }
-          return item[prop] === params[prop]
-        })
+          return item[prop] === params[prop];
+        });
       }
     }
     if (flag) {
@@ -94,22 +124,22 @@ export class ComplexTableComponent implements OnInit {
           componentRef.addNewDeliver();
         }
       },
-      {
-        label: '保存',
-        type: 'primary',
-        onClick: (componentRef) => {
-          if (componentRef.getParams()) {
-            this.dropDownService.getDeliverStorage();
+        {
+          label: '保存',
+          type: 'primary',
+          onClick: (componentRef) => {
+            if (componentRef.getParams()) {
+              this.dropDownService.getDeliverStorage();
+              modal.destroy();
+            }
+          }
+        },
+        {
+          label: '取消',
+          onClick: () => {
             modal.destroy();
           }
         }
-      },
-      {
-        label: '取消',
-        onClick: () => {
-          modal.destroy();
-        }
-      }
       ]
     });
   }
@@ -128,8 +158,6 @@ export class ComplexTableComponent implements OnInit {
       localStorage.setItem('tableMockData', JSON.stringify(mockData));
     }
   }
-
-
 
 
   deleteItem(index) {

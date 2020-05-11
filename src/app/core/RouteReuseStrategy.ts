@@ -64,8 +64,8 @@ export class RouteTabReuseStrategy implements RouteReuseStrategy {
     RouteTabReuseStrategy.reuseRoute[this.getRouteUrl(route)] = handle;
   }
 
-  private getRouteUrl(route: ActivatedRouteSnapshot) {//获取当前路由路径
-    return route['_routerState'].url.replace(/\//g, '_');
+  private getRouteUrl(route: ActivatedRouteSnapshot) {//获取当前路由路径,去除查询参数
+    return route['_routerState'].url.split('?')[0].replace(/\//g, '_');
   }
 
 
