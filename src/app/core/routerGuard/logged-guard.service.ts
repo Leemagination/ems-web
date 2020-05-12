@@ -38,6 +38,10 @@ export class LoggedGuard implements CanActivate, CanLoad, CanActivateChild {
     if (this.cookieService.getCookie('Authorization')) {
       return true;
     } else {
+      if (!sessionStorage.getItem('developer')) {
+        this.baseService.logout();
+        return;
+      }
       this.nzModal.error({
         nzTitle: '<i>登录失效</i>',
         nzContent: '<b>用户登录信息过期,请重新登录!</b>',

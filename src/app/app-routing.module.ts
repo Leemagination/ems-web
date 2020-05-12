@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./pages/mainPage/main-page.module').then(m => m.MainPageModule),
-    canActivate: [LoggedGuard]
+    canLoad: [LoggedGuard]
   },
   {
     path: '**', redirectTo: '', pathMatch: 'full'

@@ -1,0 +1,54 @@
+.homePageMessage {
+  position: relative;
+  margin: 0 8px;
+  padding: 0 20px;
+  font-size: 20px;
+  color: #262626;
+
+  &:after {
+    position: absolute;
+    height: 80%;
+    width: 1px;
+    top: 10%;
+    right: 0;
+    background-color: rgba(133, 133, 133, 0.81);
+    content: '';
+  }
+
+  h3 {
+    color: #b5b5b5;
+    margin-bottom: 2px;
+  }
+}
+
+.homeTitle {
+  padding: 0 12px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 20px;
+  position: relative;
+
+  &:after {
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #dbdbdb;
+    content: '';
+  }
+}
+
+.progressItem {
+  padding: 10px;
+  height: 200px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0 1px 0 #b7b7b7;
+  border: 0;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 8px 0 #cacaca96;
+  }
+}

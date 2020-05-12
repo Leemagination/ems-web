@@ -1,8 +1,113 @@
-<div>home-page works!</div>
-<div style="height:1200px;">
-  <input nz-input [(ngModel)]="chart1Test"/>
-<button nz-button (click)="test()">测试</button>
-<button nz-button  [routerLink]="'/chart1'">图表1</button>
-<button nz-button  [routerLink]="'/chart2'">图表2</button>
-<button nz-button  (click)="test2()">图表跳转</button>
+<div nz-row class="normalShaow" style="overflow: hidden;padding:10px;margin-bottom:20px;">
+  <div nz-col [nzSpan]="12">
+    <nz-avatar nzIcon="user" style="float:left;margin:0 12px;cursor: pointer;" [nzSize]="80"
+               nzSrc="./../../../assets/img/avatar.png"></nz-avatar>
+    <div style="margin:10px 0;"><span style="font-size: 24px;">今天又是辛苦搬砖的一天</span></div>
+    <div><span style="color:darkgrey;">前端开发工程师 | 某个公司-某个部门-某个组</span></div>
+  </div>
+  <div nz-col [nzSpan]="12" style="text-align: right;margin-top:10px;">
+    <div style="display: inline-block" class="homePageMessage">
+      <h3>项目数</h3>
+      <div>66</div>
+    </div>
+    <div style="display: inline-block" class="homePageMessage">
+      <h3>团队内排名</h3>
+      <div>1/36</div>
+    </div>
+    <div style="display: inline-block" class="homePageMessage">
+      <h3>项目访问</h3>
+      <div>6666</div>
+    </div>
+  </div>
+</div>
+
+
+<div nz-row style="margin-bottom:20px;">
+  <div nz-col class="normalShaow" [nzSpan]="10">
+    <div class="homeTitle">
+      <span>进行中的项目</span>
+    </div>
+    <div nz-row>
+      <div nz-col [nzSpan]="12" class="progressItem">
+        <div style="height:50px;">
+          <img src="https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png" width="30"
+               style="border-radius: 50%">
+          <span style="font-size: 20px;vertical-align: middle;font-weight: 600;">Alipay</span>
+        </div>
+        <div style="height:90px;color:#c5c5c5">
+          <span>缺少爱的人的问题在于他们不知道爱是什么样的<br>所以他们很容易被骗,容易看到并不存在的东西 <br>但是,大概我们都会常常骗自己</span>
+        </div>
+        <div style="height:40px;color:#c5c5c5">
+          <span>去他X的世界</span>
+        </div>
+      </div>
+      <div nz-col [nzSpan]="12" class="progressItem">
+        <div style="height:50px;">
+          <img src="https://gw.alipayobjects.com/zos/rmsportal/zOsKZmFRdUtvpqCImOVY.png" width="30"
+               style="border-radius: 50%">
+          <span style="font-size: 20px;vertical-align: middle;font-weight: 600;">Angular</span>
+        </div>
+        <div style="height:90px;color:#c5c5c5">
+          <span>人类早就可以坐太空船去月球 <br>但永远无法探索别人内心的宇宙</span>
+        </div>
+        <div style="height:40px;color:#c5c5c5">
+          <span>大佛普拉斯</span>
+        </div>
+      </div>
+      <div nz-col [nzSpan]="12" class="progressItem">
+        <div style="height:50px;">
+          <img src="https://gw.alipayobjects.com/zos/rmsportal/dURIMkkrRFpPgTuzkwnB.png" width="30"
+               style="border-radius: 50%">
+          <span style="font-size: 20px;vertical-align: middle;font-weight: 600;">Ant Design</span>
+        </div>
+        <div style="height:90px;color:#c5c5c5">
+          <span>你总是动不动就崩溃就因为天不从人愿事不从你心 <br>但人生就是如此,别总是期望太高</span>
+        </div>
+        <div style="height:40px;color:#c5c5c5">
+          <span>破产姐妹</span>
+        </div>
+      </div>
+      <div nz-col [nzSpan]="12" class="progressItem">
+        <div style="height:50px;">
+          <img src="https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png" width="30"
+               style="border-radius: 50%">
+          <span style="font-size: 20px;vertical-align: middle;font-weight: 600;">React</span>
+        </div>
+        <div style="height:90px;color:#c5c5c5">
+          <span>你想要什么? <br>普通的东西,美好的生活,很棒的公寓,有趣的工作 <br>有个一起看电影的人</span>
+        </div>
+        <div style="height:40px;color:#c5c5c5">
+          <span>杀死伊芙</span>
+        </div>
+      </div>
+      <div nz-col [nzSpan]="12" class="progressItem">
+        <div style="height:50px;">
+          <img src="https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png" width="30"
+               style="border-radius: 50%">
+          <span style="font-size: 20px;vertical-align: middle;font-weight: 600;">Bootstrap</span>
+        </div>
+        <div style="height:90px;color:#c5c5c5">
+          <span>当你最倒霉的时候啊 <br>一定要抗住了,别丧气 <br>因为啊,那正是你运气该上升的时候了</span>
+        </div>
+        <div style="height:40px;color:#c5c5c5">
+          <span>底部的文字</span>
+        </div>
+      </div>
+      <div nz-col [nzSpan]="12" class="progressItem">
+        <div style="height:50px;">
+          <img src="https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png" width="30"
+               style="border-radius: 50%">
+          <span style="font-size: 20px;vertical-align: middle;font-weight: 600;">Alipay</span>
+        </div>
+        <div style="height:90px;color:#c5c5c5">
+          <span>一直很尊重奶茶,没去冰,没少糖,没少喝</span>
+        </div>
+        <div style="height:40px;color:#c5c5c5">
+          <span>底部的文字</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div nz-col class="normalShaow" [nzSpan]="13" [nzOffset]="1"></div>
+
 </div>

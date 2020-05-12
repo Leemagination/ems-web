@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.submitForm()) {
       this.cookieService.setCookie('Authorization', JSON.stringify(this.validateForm.value));
+      sessionStorage.setItem('developer', 'Leemagination');
       this.router.navigateByUrl('/home');
     }
   }
