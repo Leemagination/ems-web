@@ -1,27 +1,15 @@
-# EmsWeb
+# 基于Angular9构建的SPA后台管理系统  
+该项目是使用Angular9和 ng-zorro-antd 构建的一款单页面应用后台管理系统。
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+系统具有登录、注册、多语言切换、权限控制等功能，页面之间通过tab的方式进行切换。
 
-## Development server
+>该项目演示中的数据由mockjs生成   
+>待办项和复杂表格页的内容是保存在localStorage，可随意增删改查。
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 演示图
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+![演示图1](https://raw.githubusercontent.com/Leemagination/ems-web/master/src/assets/img/img1.png)
+![演示图2](https://raw.githubusercontent.com/Leemagination/ems-web/master/src/assets/img/img2.png)
+![演示图3](https://raw.githubusercontent.com/Leemagination/ems-web/master/src/assets/img/img3.png)
