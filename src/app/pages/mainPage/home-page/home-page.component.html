@@ -8,15 +8,15 @@
   <div nz-col [nzSpan]="12" style="text-align: right;margin-top:10px;">
     <div style="display: inline-block" class="homePageMessage">
       <h3>项目数</h3>
-      <div>66</div>
+      <div style="font-weight:600;">66</div>
     </div>
     <div style="display: inline-block" class="homePageMessage">
       <h3>团队内排名</h3>
-      <div>1/36</div>
+      <div style="font-weight:600;">1/36</div>
     </div>
     <div style="display: inline-block" class="homePageMessage">
       <h3>项目访问</h3>
-      <div>6666</div>
+      <div style="font-weight:600;">6666</div>
     </div>
   </div>
 </div>
@@ -34,7 +34,7 @@
                style="border-radius: 50%">
           <span style="font-size: 20px;vertical-align: middle;font-weight: 600;">Alipay</span>
         </div>
-        <div style="height:90px;color:#c5c5c5">
+        <div style="height:90px;color:#c5c5c5;overflow:hidden;">
           <span>缺少爱的人的问题在于他们不知道爱是什么样的<br>所以他们很容易被骗,容易看到并不存在的东西 <br>但是,大概我们都会常常骗自己</span>
         </div>
         <div style="height:40px;color:#c5c5c5">
@@ -47,7 +47,7 @@
                style="border-radius: 50%">
           <span style="font-size: 20px;vertical-align: middle;font-weight: 600;">Angular</span>
         </div>
-        <div style="height:90px;color:#c5c5c5">
+        <div style="height:90px;color:#c5c5c5;overflow:hidden;">
           <span>人类早就可以坐太空船去月球 <br>但永远无法探索别人内心的宇宙</span>
         </div>
         <div style="height:40px;color:#c5c5c5">
@@ -60,8 +60,8 @@
                style="border-radius: 50%">
           <span style="font-size: 20px;vertical-align: middle;font-weight: 600;">Ant Design</span>
         </div>
-        <div style="height:90px;color:#c5c5c5">
-          <span>你总是动不动就崩溃就因为天不从人愿事不从你心 <br>但人生就是如此,别总是期望太高</span>
+        <div style="height:90px;color:#c5c5c5;overflow:hidden;">
+          <span>你总是动不动就崩溃,就因为天不从人愿,事不从你心 <br>但人生就是如此,别总是期望太高</span>
         </div>
         <div style="height:40px;color:#c5c5c5">
           <span>破产姐妹</span>
@@ -73,7 +73,7 @@
                style="border-radius: 50%">
           <span style="font-size: 20px;vertical-align: middle;font-weight: 600;">React</span>
         </div>
-        <div style="height:90px;color:#c5c5c5">
+        <div style="height:90px;color:#c5c5c5;overflow:hidden;">
           <span>你想要什么? <br>普通的东西,美好的生活,很棒的公寓,有趣的工作 <br>有个一起看电影的人</span>
         </div>
         <div style="height:40px;color:#c5c5c5">
@@ -86,7 +86,7 @@
                style="border-radius: 50%">
           <span style="font-size: 20px;vertical-align: middle;font-weight: 600;">Bootstrap</span>
         </div>
-        <div style="height:90px;color:#c5c5c5">
+        <div style="height:90px;color:#c5c5c5;overflow:hidden;">
           <span>当你最倒霉的时候啊 <br>一定要抗住了,别丧气 <br>因为啊,那正是你运气该上升的时候了</span>
         </div>
         <div style="height:40px;color:#c5c5c5">
@@ -99,7 +99,7 @@
                style="border-radius: 50%">
           <span style="font-size: 20px;vertical-align: middle;font-weight: 600;">Alipay</span>
         </div>
-        <div style="height:90px;color:#c5c5c5">
+        <div style="height:90px;color:#c5c5c5;overflow:hidden;">
           <span>一直很尊重奶茶,没去冰,没少糖,没少喝</span>
         </div>
         <div style="height:40px;color:#c5c5c5">
@@ -108,6 +108,157 @@
       </div>
     </div>
   </div>
-  <div nz-col class="normalShaow" [nzSpan]="13" [nzOffset]="1"></div>
 
+  <div nz-col [nzSpan]="13" [nzOffset]="1">
+    <div nz-row style="margin-bottom: 30px;">
+      <div class="normalShaow" style="width:100%;">
+        <nz-card style="width: 33%;vertical-align:top;display: inline-block;cursor: pointer;"
+                 [nzActions]="[actionSetting, actionEdit, actionEllipsis]">
+          <div style="height:120px;">
+            <div style="height:40px;color:black;font-size: 16px;font-weight:600;">
+              <img src="https://gw.alipayobjects.com/zos/rmsportal/ComBAopevLwENQdKWiIn.png" width="30"
+                   style="border-radius: 50%;">Vue
+            </div>
+            <div style="height:80px;">
+              <div style="width:50%;float: left;text-align: center;">
+                <p style="color:darkgrey;">活跃用户</p>
+                <p style="font-size: 16px;font-weight: bold;">18万</p>
+              </div>
+              <div style="width:50%;float: right;text-align: center;">
+                <p style="color:darkgrey;">新增用户</p>
+                <p style="font-size: 16px;font-weight: bold;">1654</p>
+              </div>
+            </div>
+          </div>
+        </nz-card>
+        <ng-template #actionSetting>
+          <i nz-icon nzType="setting"></i>
+        </ng-template>
+        <ng-template #actionEdit>
+          <i nz-icon nzType="edit"></i>
+        </ng-template>
+        <ng-template #actionEllipsis>
+          <i nz-icon nzType="ellipsis"></i>
+        </ng-template>
+        <nz-card style="width: 33%;vertical-align:top;display: inline-block;cursor: pointer;"
+                 [nzActions]="[actionSetting, actionEdit, actionEllipsis]">
+          <div style="height:120px;">
+            <div style="height:40px;color:black;font-size: 16px;font-weight:600;">
+              <img src="https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png" width="30"
+                   style="border-radius: 50%;">Ant Design Pro
+            </div>
+            <div style="height:80px;">
+              <div style="width:50%;float: left;text-align: center;">
+                <p style="color:darkgrey;">活跃用户</p>
+                <p style="font-size: 16px;font-weight: bold;">20万</p>
+              </div>
+              <div style="width:50%;float: right;text-align: center;">
+                <p style="color:darkgrey;">新增用户</p>
+                <p style="font-size: 16px;font-weight: bold;">1324</p>
+              </div>
+            </div>
+          </div>
+        </nz-card>
+        <ng-template #actionSetting>
+          <i nz-icon nzType="setting"></i>
+        </ng-template>
+        <ng-template #actionEdit>
+          <i nz-icon nzType="edit"></i>
+        </ng-template>
+        <ng-template #actionEllipsis>
+          <i nz-icon nzType="ellipsis"></i>
+        </ng-template>
+        <nz-card style="width: 33%;vertical-align:top;display: inline-block;cursor: pointer;"
+                 [nzActions]="[actionSetting, actionEdit, actionEllipsis]">
+          <div style="height:120px;">
+            <div style="height:40px;color:black;font-size: 16px;font-weight:600;">
+              <img src="https://gw.alipayobjects.com/zos/rmsportal/nxkuOJlFJuAUhzlMTCEe.png" width="30"
+                   style="border-radius: 50%;">Wepack
+            </div>
+            <div style="height:80px;">
+              <div style="width:50%;float: left;text-align: center;">
+                <p style="color:darkgrey;">活跃用户</p>
+                <p style="font-size: 16px;font-weight: bold;">12万</p>
+              </div>
+              <div style="width:50%;float: right;text-align: center;">
+                <p style="color:darkgrey;">新增用户</p>
+                <p style="font-size: 16px;font-weight: bold;">2464</p>
+              </div>
+            </div>
+          </div>
+        </nz-card>
+        <ng-template #actionSetting>
+          <i nz-icon nzType="setting"></i>
+        </ng-template>
+        <ng-template #actionEdit>
+          <i nz-icon nzType="edit"></i>
+        </ng-template>
+        <ng-template #actionEllipsis>
+          <i nz-icon nzType="ellipsis"></i>
+        </ng-template>
+      </div>
+    </div>
+    <div nz-row>
+      <div class="normalShaow" style="width:100%;">
+        <div class="homeTitle">
+          <span>动态</span>
+        </div>
+        <div nz-row style="margin: 20px;">
+          <div nz-col [nzSpan]="2">
+            <img src="https://gw.alipayobjects.com/zos/rmsportal/lctvVCLfRpYCkYxAsiVQ.png"
+                 style="border-radius: 50%;text-align: center;"
+                 width="40">
+          </div>
+          <div nz-col [nzSpan]="22">
+            <div>张三 完成了 <a>5月迭代</a>中的 <a>国际化功能</a>需求</div>
+            <div>3分钟前</div>
+          </div>
+        </div>
+        <div nz-row style="margin: 20px;">
+          <div nz-col [nzSpan]="2">
+            <img src="https://gw.alipayobjects.com/zos/rmsportal/lctvVCLfRpYCkYxAsiVQ.png"
+                 style="border-radius: 50%;text-align: center;"
+                 width="40">
+          </div>
+          <div nz-col [nzSpan]="22">
+            <div>李四 将 <a>4月迭代</a>中的 <a>新项目</a>需求,发布上线了</div>
+            <div>5分钟前</div>
+          </div>
+        </div>
+        <div nz-row style="margin: 20px;">
+          <div nz-col [nzSpan]="2">
+            <img src="https://gw.alipayobjects.com/zos/rmsportal/lctvVCLfRpYCkYxAsiVQ.png"
+                 style="border-radius: 50%;text-align: center;"
+                 width="40">
+          </div>
+          <div nz-col [nzSpan]="22">
+            <div>王五 分享了一篇文章, <a>程序员如何有效防止脱发</a></div>
+            <div>1小时前</div>
+          </div>
+        </div>
+        <div nz-row style="margin: 20px;">
+          <div nz-col [nzSpan]="2">
+            <img src="https://gw.alipayobjects.com/zos/rmsportal/lctvVCLfRpYCkYxAsiVQ.png"
+                 style="border-radius: 50%;text-align: center;"
+                 width="40">
+          </div>
+          <div nz-col [nzSpan]="22">
+            <div>大佬 在<a>6月迭代</a>新增了<a>新的项目</a>需求</div>
+            <div>2小时前</div>
+          </div>
+        </div>
+        <div nz-row style="margin: 20px;">
+          <div nz-col [nzSpan]="2">
+            <img src="https://gw.alipayobjects.com/zos/rmsportal/lctvVCLfRpYCkYxAsiVQ.png"
+                 style="border-radius: 50%;text-align: center;"
+                 width="40">
+          </div>
+          <div nz-col [nzSpan]="22">
+            <div>小李 完成了<a href="https://github.com/Leemagination/ems-web" target="_blank">ems-web后台demo系统</a></div>
+            <div>2小时前</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

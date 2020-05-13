@@ -73,7 +73,7 @@
           <td>{{data.remark}}</td>
           <td>
             <a (click)="openAddModal(data)">{{'编辑'|translate}}</a>
-            <a style="color:red;margin:0 10px;" (click)="deleteItem(i)">{{'删除'|translate}}</a>
+            <a style="color:red;margin:0 10px;"   nz-popconfirm nzPopconfirmTitle="确定要删除吗?" nzOkText="确定" nzCancelText="取消" (nzOnConfirm)="deleteItem(i)">{{'删除'|translate}}</a>
           </td>
         </tr>
       </tbody>
