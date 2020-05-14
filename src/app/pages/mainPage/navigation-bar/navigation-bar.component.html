@@ -4,14 +4,14 @@
       (click)="menuService.isCollapsed=!menuService.isCollapsed">
       <i nz-icon [nzType]="menuService.isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
     </button>
-    <img src="./../../../assets/img/demo.png" alt="" width="240" class="imgLogo"
+    <img src="assets/img/demo.png" alt="" width="240" class="imgLogo"
       [ngStyle]="{opacity:menuService.isCollapsed?0:1}">
   </div>
   <div class="toolBar">
     <i (click)="drawVisible=true" nz-icon nzType="form" nzTheme="outline"
       style="font-size: 20px;vertical-align: middle;cursor:pointer;"></i>
     <nz-avatar nzIcon="user" nz-dropdown [nzDropdownMenu]="UserMenu" style="margin:0 12px;cursor: pointer;"
-      nzSrc="./../../../assets/img/avatar.png"></nz-avatar>
+      nzSrc="assets/img/avatar.png"></nz-avatar>
     <app-language-change-modal></app-language-change-modal>
   </div>
   <div class="navigationArea">

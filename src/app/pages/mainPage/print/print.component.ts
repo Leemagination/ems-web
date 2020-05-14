@@ -13,7 +13,7 @@ export class PrintComponent implements OnInit {
     2: 'Shinazugawa Sanemi.pdf',
     3: 'Tomioka Giyuu.pdf'
   };
-  iframeSrc: SafeUrl = './../../../assets/img/Agatsuma Zenitsu.pdf';
+  iframeSrc: SafeUrl = 'assets/img/Agatsuma Zenitsu.pdf';
 
   constructor(private sanitizer: DomSanitizer) {
   }
@@ -33,7 +33,7 @@ export class PrintComponent implements OnInit {
   }
 
   safeUrl() {
-    this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(`./../../../assets/img/${this.pdfMap[this.currentPdfIndex]}`);
+    this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(`assets/img/${this.pdfMap[this.currentPdfIndex]}`);
   }
 
 }
