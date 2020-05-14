@@ -64,6 +64,9 @@ export class ComplexTableComponent implements OnInit {
     const params = this.searchParams.getParams();
     let arr = JSON.parse(localStorage.getItem('tableMockData'));
     let flag = true;
+    if (!arr) {
+      return;
+    }
     for (const prop in params) {
       if (params[prop] !== null && params[prop] !== undefined) {
         flag = false;
