@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ews-web": {
+    "ems-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ews-web",
+            "outputPath": "dist/ems-web",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -80,22 +80,22 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ews-web:build"
+            "browserTarget": "ems-web:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ews-web:build:production"
+              "browserTarget": "ems-web:build:production"
             },
             "hmr": {
               "hmr": true,
-              "browserTarget": "ews-web:build:hmr"
+              "browserTarget": "ems-web:build:hmr"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ews-web:build"
+            "browserTarget": "ems-web:build"
           }
         },
         "test": {
@@ -132,16 +132,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ews-web:serve"
+            "devServerTarget": "ems-web:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ews-web:serve:production"
+              "devServerTarget": "ems-web:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "ews-web"
+  "defaultProject": "ems-web"
 }
