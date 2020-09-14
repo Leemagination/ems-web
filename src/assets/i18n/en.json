@@ -129,5 +129,16 @@
   "银行卡": "bank card",
   "支付宝": "Alipay",
   "提交": "submit",
-  "已成功转账!": "transfer succeeded"
+  "已成功转账!": "transfer succeeded",
+  "今天又是辛苦搬砖的一天":"today is another hard day to move bricks",
+  "前端开发工程师":"front end development engineer",
+  "某个公司":"xxx company",
+  "某个部门":"xxx department",
+  "某个组":"xxx team",
+  "项目数":"projects count",
+  "团队内排名":"ranking within the team",
+  "项目访问":"project visit",
+  "进行中的项目":"projects in progress",
+  "活跃用户":"active users",
+  "新增用户":"new users"
 }

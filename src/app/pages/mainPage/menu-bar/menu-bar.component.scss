@@ -16,5 +16,14 @@
   ::ng-deep .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title, ::ng-deep .ant-menu-inline-collapsed > .ant-menu-item {
     padding: 0 22px !important;
   }
+  ::ng-deep .ant-menu-inline .ant-menu-item:focus{
+    transition: all 0.5s linear;
+    &:focus{
+      outline: none;
+      background-color: #36a5fa;
+      color:white
+    }
+ 
+  }
 
 }

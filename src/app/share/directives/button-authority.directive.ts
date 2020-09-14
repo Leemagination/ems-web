@@ -19,10 +19,10 @@ export class ButtonAuthorityDirective implements OnInit, DoCheck {
   viewRef;
 
   constructor(private templateRef: TemplateRef<any>,
-              private viewContainer: ViewContainerRef,
-              private menuService: MenuBarService,
-              private render: Renderer2,
-              private router: Router) {
+    private viewContainer: ViewContainerRef,
+    private menuService: MenuBarService,
+    private render: Renderer2,
+    private router: Router) {
 
   }
 
@@ -43,6 +43,10 @@ export class ButtonAuthorityDirective implements OnInit, DoCheck {
   ngDoCheck(): void {
     const url = this.router.url.split('?')[0];
     const authority = this.menuService.menuPermission[url];
+    if (!authority) {
+      this.viewContainer.clear();
+      return;
+    }
     if (authority.buttons.indexOf(this.buttonAuthority) === -1) {
       if (this.viewRef) {
         const index = this.viewContainer.indexOf(this.viewRef);

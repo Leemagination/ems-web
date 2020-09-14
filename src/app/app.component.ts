@@ -27,7 +27,7 @@ export class AppComponent {
         'address': '冲鸭鸭鸭鸭鸭',
         'remark': '这就是一个备注而已',
         'orderID': '123456789',
-        'createName': '小李',
+        'createName': 'Leemagination',
         'createDate': '2020-05-14T09:37:36.529Z'
       }, {
         'area': ['440000', '440100', '440111'],
@@ -37,7 +37,7 @@ export class AppComponent {
         'address': '随便填一个地址',
         'remark': '',
         'orderID': '987654321',
-        'createName': '小李',
+        'createName': 'Leemagination',
         'createDate': '2020-05-14T09:38:23.640Z'
       }, {
         'area': ['510000', '510100', '510114'],
@@ -47,7 +47,7 @@ export class AppComponent {
         'address': 'XX区XXX路 XX 号',
         'remark': '11111',
         'orderID': '66666666',
-        'createName': '小李',
+        'createName': 'Leemagination',
         'createDate': '2020-05-14T09:39:05.076Z'
       }];
       localStorage.setItem('tableMockData', JSON.stringify(data));

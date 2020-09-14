@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })
-export class SearchBarComponent implements OnInit, AfterViewInit {
+export class SearchBarComponent implements OnInit, AfterViewInit, DoCheck {
   @Output() searchEvent = new EventEmitter<boolean>();
   @Output() resetEvent = new EventEmitter<boolean>();
   @ViewChild('searchBar', { static: true }) searchBar: ElementRef;
@@ -33,6 +33,12 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
     }
   }
 
+  ngDoCheck() {
+    if (!this.buttonGroup || !this.searchArea || !this.basicButton || !this.searchBar || !this.stretchArea) {
+      return;
+    }
+    this.moveSearchItem();
+  }
 
   moveSearchItem() {
     const buttonGroupWidth = this.buttonGroup.nativeElement.clientWidth;

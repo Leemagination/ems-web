@@ -13,7 +13,7 @@ export class BasicFormComponent implements OnInit {
   saveLoading = false;
 
   constructor(private fb: FormBuilder, public dropDownService: DropDownDataSourceService,
-              private nzMessage: NzMessageService) {
+    private nzMessage: NzMessageService) {
   }
 
   ngOnInit(): void {
@@ -45,17 +45,15 @@ export class BasicFormComponent implements OnInit {
       this.saveLoading = true;
       setTimeout(() => {
         this.saveLoading = false;
-        this.resetForm(true);
+        this.resetForm();
         this.nzMessage.success('已保存!');
       }, 1000);
     }
   }
 
-  resetForm(deepClear = false) {
-    if (deepClear) {
-      this.validateForm.markAsUntouched();
-      this.validateForm.markAsPristine();
-    }
+  resetForm() {
+    this.validateForm.markAsUntouched();
+    this.validateForm.markAsPristine();
     this.validateForm.setValue({
       userName: null,
       area: null,
@@ -77,9 +75,9 @@ export class BasicFormComponent implements OnInit {
 
   confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
     if (!control.value) {
-      return {required: true};
+      return { required: true };
     } else if (control.value !== this.validateForm.controls.password.value) {
-      return {confirm: true, error: true};
+      return { confirm: true, error: true };
     }
     return {};
   };
