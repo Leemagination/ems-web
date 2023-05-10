@@ -24,7 +24,7 @@
     "@angular/router": "~9.1.0",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
-    "echarts": "^4.7.0",
+    "echarts": "^5.4.2",
     "mockjs": "^1.1.0",
     "ng-zorro-antd": "^9.1.0",
     "rxjs": "~6.5.4",
